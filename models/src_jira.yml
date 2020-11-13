@@ -1,0 +1,95 @@
+# for source packages/pulling from the raw connector data
+
+version: 2
+
+sources:
+  - name: jira 
+    database: "{{ var ('jira_database', target.database) }}"
+    schema: "{{ var ('jira_schema', 'jira') }}"
+
+    loader: fivetran
+    loaded_at_field: _fivetran_synced
+      
+    freshness:
+      warn_after: {count: 72, period: hour}
+      error_after: {count: 96, period: hour}
+
+    tables:
+      - name: board
+        description: Table of project boards belonging to the organization. TODO - check w drew
+        columns:
+          - name: id 
+            description: Unique ID of the board.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Name of the board.
+          - name: type
+            description: Type of agile board (ie simple vs scrum).
+
+      - name: comment
+        description: Table of comments made on issues.
+        columns:
+          - name: id 
+            description: Unique ID of the comment.
+            tests:
+              - unique
+              - not_null
+          - name: author_id
+            description: Foreign key referencing the `user` id of the comment's author.
+          - name: body
+            description: Content of the comment.
+          - name: created
+            description: Timestamp of when the comment was created. TODO - get timezone clarification
+          - name: is_public
+            description: Boolean that is true if the comment is visible to all users.
+          - name: issue_id 
+            description: Foreign key referencing the id of the `issue` that was commented on.
+          - name: update_author_id
+            description: TODO - check w drew
+          - name: updated 
+            description: Timestamp of when the comment was last updated.
+
+      - name: component
+        description: >
+          Table of project components (subsections to group issues).
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - id
+                - project_id
+        columns:
+          - name: id
+            description: ID of the component.
+          - name: description
+            description: Description given to the component.
+          - name: name
+            description: UI-facing name of the component.
+          - name: project_id
+            description: Foreign key referencing the id of the component's `project`.
+
+      - name: epic
+      - name: field 
+      - name: field_option
+      - name: issue
+      - name: issue_field_history
+      - name: issue_link 
+      - name: issue_multi_select_history
+      - name: issue_type
+      - name: permission
+      - name: permission_holder
+      - name: permission_scheme
+      - name: priority
+      - name: project
+      - name: project_category
+      - name: project_role
+      - name: project_role_actor
+      - name: resolution
+      - name: status
+      - name: status_category
+      - name: user
+      - name: user_group
+      - name: version
+      - name: worklog
+         

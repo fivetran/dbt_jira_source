@@ -1,0 +1,27 @@
+name: 'PACKAGE_NAME_integration_tests'
+version: '1.0.0'
+config-version: 2
+profile: 'integration_tests'
+
+
+vars:
+  PACKAGE_NAME:
+      table: "{{ ref('table_data') }}"
+      table_2: "{{ ref('table_2_data') }}"
+      using_bool: True
+      using_bool_2: True
+
+seeds:
+  PACKAGE_NAME_integration_tests:
+    +column_types:
+      _fivetran_synced: timestamp
+    table:
+      +column_types:
+        create_time: timestamp
+        start_time: timestamp
+    table_2:
+      +column_types:
+        create_time: timestamp
+        start_time: timestamp
+        send_time: timestamp
+

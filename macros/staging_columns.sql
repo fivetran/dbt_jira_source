@@ -1,0 +1,2 @@
+-- Use the macro in Fivetran utils to generate this macro
+-- https://github.com/fivetran/dbt_fivetran_utils#generate_columns_macro-source
