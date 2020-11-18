@@ -47,7 +47,7 @@ sources:
           - name: issue_id 
             description: Foreign key referencing the id of the `issue` that was commented on.
           - name: update_author_id
-            description: TODO - check w drew
+            description: Foreign key referencing the id of the `user` who last updated this comment.
           - name: updated 
             description: Timestamp of when the comment was last updated.
 
@@ -70,17 +70,226 @@ sources:
             description: Foreign key referencing the id of the component's `project`.
 
       - name: epic
+        description: Table of epics, which are comprised of smaller user stories.
+        columns:
+          - name: id
+            description: Unique ID of the epic.
+            tests: 
+              - unique
+              - not_null
+          - name: done
+            description: Boolean that is true if the epic is completed, false otherwise.
+          - name: key
+            description: The epic's key (user-facing id).
+          - name: name
+            description: Name of the epic.
+          - name: summary
+            description: todo - get data synced
+        
       - name: field 
+        description: Table of all issue fields.
+        columns:
+          - name: id
+            description: >
+              Unique ID of the field. Default fields will have descriptive IDs, whereas custom
+              field IDs will be `'customfield_#####'`.
+            tests:
+              - unique
+              - not_null
+          - name: is_array
+            description: Boolean that is true if a field can have multiple values (is mulitselect).
+          - name: is_custom
+            description: >
+              Boolean that is true if the field is custom to this organization, and false if 
+              it is default to Jira.
+          - name: name
+            description: Name of the field as it appears on issue cards.
+
       - name: field_option
+        description: >
+          Table of value options for custom multiselect issues. Note: this table does not join with
+          the `field` table.
+        columns:
+          - name: id
+            description: Unique ID of the field option.
+          - name: name
+            description: Value of the option as it appears in the UI.
+
       - name: issue
+        description: Table of all issues in your organization's Jira (captures soft deletes).
+        columns:
+          - name: id
+            description: Unique ID of the issue. 
+            tests:
+              - unique
+              - not_null
+          - name: _fivetran_deleted
+            description: Boolean that is true if the row has been soft-deleted from the source.
+          - name: _original_estimate
+            description: The original estimate of how long working on this issue would take, in seconds. todo - why is this here?
+          - name: _remaining_estimate
+            description: The estimate of how much longer working on this issue will take, in seconds. todo - why is this here?
+          - name: _time_spent
+            description: The time that was spent working on this issue, in seconds.
+          - name: assignee
+            description: Foreign key referencing the ID of the `user` currently assigned to this task.
+          - name: created
+            description: Timestamp of when the issue was created (in UTC).
+          - name: creator
+            description: Foreign key referencing the `user` who first created the issue.
+          - name: description
+            description: The issue description, if given.
+          - name: due_date
+            description: Calendar day on which the issue is due, if a due date is provided.
+          - name: environment
+            description: Text field describing the environment in which the issue occurred (ie "IE9 on Windows 7").
+          - name: issue_type
+            description: Foreign key referencing the ID of the `issue_type`. 
+          - name: key
+            description: UI-facing id of the issue.
+          - name: last_viewed
+            description: Timestamp of when the user who set up the connector last viewed the issue. TODO - check this out with drew
+          - name: original_estimate
+            description: The original estimate of how long working on this issue would take, in seconds.
+          - name: parent_id
+            description: Self-referencing ID of the parent `issue`. 
+          - name: priority
+            description: Foreign key referencing the ID of the issue's current `priority`.
+          - name: project
+            description: Foreign key referencing the ID of the `project` that the issue belongs to.
+          - name: remaining_estimate
+            description: The estimate of how much longer working on this issue will take, in seconds.
+          - name: reporter
+            description: >
+              Foreign key referencing the ID of the `user` who reported the issue. This differs from the `creator` column 
+              in that the reporter can be changed in-app.
+          - name: resolution
+            description: Foreign key referencing the ID of the issue's type of `resolution`.
+          - name: resolved
+            description: Timestamp of when the issue was resolved (ie completed, marked as duplicate).
+          - name: status
+            description: >
+              Foreign key referencing the ID of the issue's `status` (the step that the issue is currently at 
+              in the project's workflow).
+          - name: status_category_changed
+            description: Timestamp of when the status was last changed.
+          - name: summary
+            description: Title of the issue.
+          - name: time_spent
+            description: The time that was spent working on this issue, in seconds.
+          - name: updated
+            description: Timestamp of when the issue was last updated in some way.
+          - name: work_ratio
+            description: >
+              The percentage of work that has been logged against the issue (time_spent) vs the original estimate of worktime.
+              Equals -1.0 when the fields required for calculation are not provided. todo - check this
+
       - name: issue_field_history
+        description: Table of every value that each **custom non-array** (not multiselect) field has been set to.
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - field_id
+                - issue_id
+                - time
+        columns:
+          - name: field_id
+            description: Foreign key referencing the ID of the `field` that was changed.
+          - name: issue_id
+            description: Foreign key referencing the ID of the `issue` whose field was updated.
+          - name: time
+            description: Timestamp of when the issue field was set to this value.
+          - name: value
+            description: Content of the value of that the field was set to.
+
       - name: issue_link 
+        description: >
+          Table of relationships (links) created between issues. Issue links can include blockers, clones/duplicates, and general relationships.
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - issue_id
+                - related_issue_id
+        columns:
+          - name: issue_id
+            description: Foreign key referencing the ID of the `issue` that is the subject of this relationship (the linker).
+          - name: related_issue_id
+            description: Foreign key referencing the ID of the `issue` that is the object of this relationsip (the linkee).
+          - name: relationship
+            description: The nature of the link between the two issues ("blocks", "is duplicated by", "relates to", etc.)
+
       - name: issue_multi_select_history
+        description: >
+          Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to **one** value.
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - _fivetran_id
+                - time
+        columns:
+          - name: _fivetran_id 
+            description: Fivetran-generated ID hashed on field, issue, and value.
+          - name: time
+            description: Timestamp of when the issue field was updated to included this value.
+          - name: field_id
+            description: Foreign key referencing the ID of the `field` that was changed.
+          - name: issue_id
+            description: Foreign key referencing the ID of the `issue` whose field was updated.
+          - name: value
+            description: Content of the value of that the field was set to. 
+        
       - name: issue_type
+        description: >
+          Table containing information about issue types. Issue types can have identical names in different projects, but they may have 
+          differing descriptions.
+        columns:
+          - name: id 
+            description: Unique ID of the issue type. 
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: Project-level description given to the issue type.
+          - name: name
+            description: Name of the issue type (ie Epic, Task, Subtask, any custom types)
+          - name: subtask
+            description: Boolean that is true if this type of issue is a subtask.
+
       - name: permission
+        description: Table of privileges users can be granted in Jira.
+        columns: 
+          - name: id
+            description: Unique (and descriptive) ID of the user permission (ie "ASSIGN_ISSUES", "CREATE_PROJECT")
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: Description of what this privilege permits users to do. 
+          - name: name
+            description: Name of the permission as it appears in the UI.
+          - name: type
+            description: Level of the permission (global vs project).
+          - name: _fivetran_deleted
+            description: Boolean that is true if the row has been soft-deleted from the source.
+          
       - name: permission_holder
+        description: Todo 
       - name: permission_scheme
+        description: todo 
+
       - name: priority
+        description: Table of issue priority levels (global).
+        columns:
+          - name: id
+            description: Unique ID of the priority level.
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: Description of the priority level.
+          - name: name
+            description: Name of the priority as it appears in the UI.
+
       - name: project
       - name: project_category
       - name: project_role
