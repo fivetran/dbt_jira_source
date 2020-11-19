@@ -291,14 +291,126 @@ sources:
             description: Name of the priority as it appears in the UI.
 
       - name: project
-      - name: project_category
+        description: Table of all projects in your organization.
+        columns:
+          - name: id
+            description: Unique ID of the project.
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: Description of the project, if given.
+          - name: key
+            description: UI-facing ID of the project. This becomes the default prefix for tasks created within this project.
+          - name: lead_id
+            description: Foreign key referencing the ID of the `user` who leads this project.
+          - name: name
+            description: Title of the project. 
+          - name: permission_scheme_id
+            description: Foreign key referencing the ID of the `permission_scheme` that the project ascribes to. 
+          - name: project_category_id
+            description: Foreign key referencing the ID of the `project_category` that the project is associated with, if any.
+          - name: project_type_key
+            description: ID of the type of project (ie 'software').
+      
+      - name: project_board
+        description: Table relating projects to boards.
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - board_id
+                - project_id 
+        columns:
+          - name: board_id
+            description: Foreign key referencing the ID of the `board` for this project.
+          - name: project_id
+            description: Foreign key referencing the ID of the `project` that the board belongs to.
+        
+      - name: project_category  
+        description: Table storing project categories.
+        columns:
+          - name: id
+            description: Unique ID of the project category.
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: Description of nature of this project grouping.
+          - name: name
+            description: Name of the project category as it appears in the UI.
+
       - name: project_role
+        description: todo
       - name: project_role_actor
+        description: todo 
+
       - name: resolution
+        description: Table storing the types of resolutions used by your organization.
+        columns: todo
+
       - name: status
+        description: Table of project-level statuses (which may have the same umbrella `status_category`).
+        columns:
+          - name: id
+            description: Unique ID of the project status.
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: >
+              Description of the project status. Different projects may all have a status called "Backlog", but their definitions 
+              of "backlog" may differ.
+          - name: name
+            description: Title of the status.
+          - name: status_category_id
+            description: Foreign key referencing the ID of the `status_category` that this project status falls under.
+
       - name: status_category
+        description: Table of umbrella categories that project-level statuses belong to.
+        columns:
+          - name: id
+            description: Unique ID of the status category. 
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Name of the status category. 
+
       - name: user
+        description: Table of users associated with your organization.
+        columns:
+          - name: id  
+            description: Unique ID of the user. 
+            tests:
+              - unique
+              - not_null
+          - name: email
+            description: Email associated with the user acccount.
+          - name: locale
+            description: The Java locale of the user. 
+          - name: name
+            description: Name of the user as it appears in the UI.
+          - name: time_zone
+            description: The user's timezone, as defined in their settings.
+          - name: username
+            description: Account username of the user.
+
       - name: user_group
+        description: Table relating users to any Jira groups that they belong to.
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - user_id
+                - group_name 
+        columns:
+          - name: group_name
+            description: Display name of the group.
+          - name: user_id 
+            description: Foreign key referencing the ID of the `user` belonging to the group.
+
       - name: version
+        description: Table containing project releases (versions).
+        
       - name: worklog
+        
          
