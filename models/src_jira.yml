@@ -16,7 +16,7 @@ sources:
 
     tables:
       - name: board
-        description: Table of project boards belonging to the organization. TODO - check w drew
+        description: Table of project boards belonging to the organization.
         columns:
           - name: id 
             description: Unique ID of the board.
@@ -346,7 +346,32 @@ sources:
 
       - name: resolution
         description: Table storing the types of resolutions used by your organization.
-        columns: todo
+        columns: 
+          - name: id
+            description: Unique ID of the resolution type.
+            tests:
+              - unique
+              - not_null
+          - name: description
+            description: Description given to the resolution.
+          - name: name 
+            description: Display name of the resolution.
+
+      - name: sprint
+        description: Table of all sprints.
+        columns:
+          - name: id
+            description: Unique ID of the sprint.
+          - name: board_id
+            description: Foreign key referencing the ID of the `board` that the sprint lives in.
+          - name: complete_date
+            description: Timestamp of when the sprint was completed.
+          - name: end_date
+            description: Timestamp of when the sprint is planned to end.
+          - name: name  
+            description: Title of the sprint.
+          - name: start_date
+            description: Timestamp of when the sprint began. 
 
       - name: status
         description: Table of project-level statuses (which may have the same umbrella `status_category`).
@@ -409,8 +434,44 @@ sources:
             description: Foreign key referencing the ID of the `user` belonging to the group.
 
       - name: version
-        description: Table containing project releases (versions).
+        description: Table containing project versions (which become releases)
+        columns:
+          - name: id
+            description: Unique ID of the version.
+          - name: archived
+            description: Boolean that is true if the version has been archived.
+          - name: description
+            description: Description of the project version.
+          - name: name
+            description: Title of the version.
+          - name: overdue
+            description: Boolean that is true if the project version was released overdue.
+          - name: project_id
+            description: Foreign key referencing the ID of the `project` being released.
+          - name: release_date
+            description: Calendar date of when the version was released.
+          - name: released
+            description: Boolean that is true if the version has been released, false otherwise.
+          - name: start_date
+            description: Calendar start date of work on the version.
         
       - name: worklog
-        
-         
+        description: Table of worklog efforts on issues.
+        columns:
+          - name: id
+            description: ID of the worktime log (unique to the issue). 
+          - name: issue_id  
+            description: Foreign key referencing the ID of the `issue` that was worked on.
+          - name: author_id
+            description: Foreign key referencing the ID of the `user` who logged worktime.
+          - name: comment
+            description: Description of the logged work, if provided.
+          - name: started 
+            description: Timestamp of when the worklog effort was started.
+          - name: time_spent_seconds
+            description: In seconds, the time logged working on this effort. 
+          - name: update_author_id 
+            description: Foreign key referencing the ID of the `user` who last updated this worklog (the `author_id` if no one has updated it since creation).
+          - name: updated
+            description: Timestamp of when the worklog was last updated.
+
