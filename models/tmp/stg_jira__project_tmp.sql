@@ -1,0 +1,1 @@
+select *\nfrom {{ var('project') }}
