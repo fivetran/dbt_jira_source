@@ -1,1 +1,1 @@
-select *\nfrom {{ var('project') }}
+select * from {{ var('project') }}

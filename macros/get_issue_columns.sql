@@ -9,7 +9,7 @@
     {"name": "assignee", "datatype": dbt_utils.type_string(), "alias": "assignee_user_id"},
     {"name": "created", "datatype": dbt_utils.type_timestamp(), "alias": "created_at"},
     {"name": "creator", "datatype": dbt_utils.type_string(), "alias": "creator_user_id"},
-    {"name": "description", "datatype": dbt_utils.type_string()},
+    {"name": "description", "datatype": dbt_utils.type_string(), "alias": "issue_description"},
     {"name": "due_date", "datatype": "date"},
     {"name": "environment", "datatype": dbt_utils.type_string()},
     {"name": "id", "datatype": dbt_utils.type_int(), "alias": "issue_id"},
