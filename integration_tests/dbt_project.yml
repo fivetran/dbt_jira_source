@@ -31,7 +31,7 @@ vars:
 seeds:
   jira_source_integration_tests:
     +column_types:
-      _fivetran_synced: "{{ 'timestamp_ltz' if target.name == 'snowflake' else 'timestamp' }}"
+      _fivetran_synced: timestamp
     board:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
@@ -55,3 +55,4 @@ seeds:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         created: timestamp
+        work_ratio: float
