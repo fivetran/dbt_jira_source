@@ -1,13 +1,24 @@
-name: 'PACKAGE_NAME_integration_tests'
+name: 'jira_source_integration_tests'
 version: '1.0.0'
 config-version: 2
 profile: 'integration_tests'
 
 
 vars:
-  PACKAGE_NAME:
-      table: "{{ ref('table_data') }}"
-      table_2: "{{ ref('table_2_data') }}"
+  jira_source:
+      board: "{{ ref('board') }}"
+      comment: "{{ ref('comment') }}"
+      component: "{{ ref('component') }}"
+      epic: "{{ ref('epic') }}"
+      field_option: "{{ ref('field_option') }}"
+      issue_field_history: "{{ ref('issue_field_history') }}"
+      field: "{{ ref('field') }}"
+      field: "{{ ref('field') }}"
+      field: "{{ ref('field') }}"
+      field: "{{ ref('field') }}"
+      field: "{{ ref('field') }}"
+      field: "{{ ref('field') }}"
+
       using_bool: True
       using_bool_2: True
 

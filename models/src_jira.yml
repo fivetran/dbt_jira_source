@@ -20,9 +20,6 @@ sources:
         columns:
           - name: id 
             description: Unique ID of the board.
-            tests:
-              - unique
-              - not_null
           - name: name
             description: Name of the board.
           - name: type
@@ -33,9 +30,6 @@ sources:
         columns:
           - name: id 
             description: Unique ID of the comment.
-            tests:
-              - unique
-              - not_null
           - name: author_id
             description: Foreign key referencing the `user` id of the comment's author.
           - name: body
@@ -54,11 +48,6 @@ sources:
       - name: component
         description: >
           Table of project components (subsections to group issues).
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - id
-                - project_id
         columns:
           - name: id
             description: ID of the component.
@@ -74,9 +63,6 @@ sources:
         columns:
           - name: id
             description: Unique ID of the epic.
-            tests: 
-              - unique
-              - not_null
           - name: done
             description: Boolean that is true if the epic is completed, false otherwise.
           - name: key
@@ -93,9 +79,6 @@ sources:
             description: >
               Unique ID of the field. Default fields will have descriptive IDs, whereas custom
               field IDs will be `'customfield_#####'`.
-            tests:
-              - unique
-              - not_null
           - name: is_array
             description: Boolean that is true if a field can have multiple values (is mulitselect).
           - name: is_custom
@@ -120,9 +103,6 @@ sources:
         columns:
           - name: id
             description: Unique ID of the issue. 
-            tests:
-              - unique
-              - not_null
           - name: _fivetran_deleted
             description: Boolean that is true if the row has been soft-deleted from the source.
           - name: _original_estimate
@@ -186,12 +166,6 @@ sources:
 
       - name: issue_field_history
         description: Table of every value that each **custom non-array** (not multiselect) field has been set to.
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - field_id
-                - issue_id
-                - time
         columns:
           - name: field_id
             description: Foreign key referencing the ID of the `field` that was changed.
@@ -205,11 +179,6 @@ sources:
       - name: issue_link 
         description: >
           Table of relationships (links) created between issues. Issue links can include blockers, clones/duplicates, and general relationships.
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - issue_id
-                - related_issue_id
         columns:
           - name: issue_id
             description: Foreign key referencing the ID of the `issue` that is the subject of this relationship (the linker).
@@ -221,11 +190,6 @@ sources:
       - name: issue_multi_select_history
         description: >
           Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to **one** value.
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - _fivetran_id
-                - time
         columns:
           - name: _fivetran_id 
             description: Fivetran-generated ID hashed on field, issue, and value.
@@ -245,9 +209,6 @@ sources:
         columns:
           - name: id 
             description: Unique ID of the issue type. 
-            tests:
-              - unique
-              - not_null
           - name: description
             description: Project-level description given to the issue type.
           - name: name
@@ -260,9 +221,6 @@ sources:
         columns: 
           - name: id
             description: Unique (and descriptive) ID of the user permission (ie "ASSIGN_ISSUES", "CREATE_PROJECT")
-            tests:
-              - unique
-              - not_null
           - name: description
             description: Description of what this privilege permits users to do. 
           - name: name
@@ -282,9 +240,6 @@ sources:
         columns:
           - name: id
             description: Unique ID of the priority level.
-            tests:
-              - unique
-              - not_null
           - name: description
             description: Description of the priority level.
           - name: name
@@ -295,9 +250,6 @@ sources:
         columns:
           - name: id
             description: Unique ID of the project.
-            tests:
-              - unique
-              - not_null
           - name: description
             description: Description of the project, if given.
           - name: key
@@ -315,11 +267,6 @@ sources:
       
       - name: project_board
         description: Table relating projects to boards.
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - board_id
-                - project_id 
         columns:
           - name: board_id
             description: Foreign key referencing the ID of the `board` for this project.
@@ -331,27 +278,21 @@ sources:
         columns:
           - name: id
             description: Unique ID of the project category.
-            tests:
-              - unique
-              - not_null
           - name: description
             description: Description of nature of this project grouping.
           - name: name
             description: Name of the project category as it appears in the UI.
 
       - name: project_role
-        description: todo
+        description: todo - not using this table but just wanna document 
       - name: project_role_actor
-        description: todo 
+        description: todo - not using this table but just wanna document 
 
       - name: resolution
         description: Table storing the types of resolutions used by your organization.
         columns: 
           - name: id
             description: Unique ID of the resolution type.
-            tests:
-              - unique
-              - not_null
           - name: description
             description: Description given to the resolution.
           - name: name 
@@ -378,9 +319,6 @@ sources:
         columns:
           - name: id
             description: Unique ID of the project status.
-            tests:
-              - unique
-              - not_null
           - name: description
             description: >
               Description of the project status. Different projects may all have a status called "Backlog", but their definitions 
@@ -395,9 +333,6 @@ sources:
         columns:
           - name: id
             description: Unique ID of the status category. 
-            tests:
-              - unique
-              - not_null
           - name: name
             description: Name of the status category. 
 
@@ -406,9 +341,6 @@ sources:
         columns:
           - name: id  
             description: Unique ID of the user. 
-            tests:
-              - unique
-              - not_null
           - name: email
             description: Email associated with the user acccount.
           - name: locale
@@ -422,11 +354,6 @@ sources:
 
       - name: user_group
         description: Table relating users to any Jira groups that they belong to.
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - user_id
-                - group_name 
         columns:
           - name: group_name
             description: Display name of the group.
@@ -456,7 +383,7 @@ sources:
             description: Calendar start date of work on the version.
         
       - name: worklog
-        description: Table of worklog efforts on issues.
+        description: Table of worklog efforts on issues. Not used by the package.
         columns:
           - name: id
             description: ID of the worktime log (unique to the issue). 
