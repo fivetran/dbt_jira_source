@@ -20,34 +20,33 @@ fields as (
     from base
 ),
 
--- coalescing some columns
 final as (
 
     select
-        _fivetran_synced,
         coalesce(original_estimate, _original_estimate) as original_estimate_seconds,
         coalesce(remaining_estimate, _remaining_estimate) as remaining_estimate_seconds,
         coalesce(time_spent, _time_spent) as time_spent_seconds,
-        assignee_user_id,
-        created_at,
-        creator_user_id,
-        issue_description,
+        assignee as assignee_user_id,
+        created as created_at,
+        creator as creator_user_id,
+        description as issue_description,
         due_date,
         environment,
-        issue_id,
-        issue_type_id,
-        issue_key,
-        parent_issue_id,
-        priority_id,
-        project_id,
-        reporter_user_id,
-        resolution_id,
-        resolved_at,
-        status_id,
-        status_changed_at,
-        issue_name,
-        updated_at,
-        work_ratio
+        id as issue_id,
+        issue_type as issue_type_id,
+        key as issue_key,
+        parent_id as parent_issue_id,
+        priority as priority_id,
+        project as project_id,
+        reporter as reporter_user_id,
+        resolution as resolution_id,
+        resolved as resolved_at,
+        status as status_id,
+        status_category_changed as status_changed_at,
+        summary as issue_name,
+        updated as updated_at,
+        work_ratio,
+        _fivetran_synced
         
     from fields
 )

@@ -16,6 +16,18 @@ fields as (
         }}
 
     from base
+),
+
+final as (
+
+    select
+        description,
+        id as issue_type_id,
+        name as issue_type_name,
+        subtask as is_subtask,
+        _fivetran_synced
+
+    from fields
 )
 
-select * from fields
+select * from final

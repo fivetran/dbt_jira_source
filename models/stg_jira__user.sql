@@ -17,6 +17,20 @@ fields as (
         }}
         
     from base
+),
+
+final as (
+
+    select 
+        email,
+        id as user_id,
+        locale,
+        name as user_display_name,
+        time_zone,
+        username,
+        _fivetran_synced
+        
+    from fields
 )
 
-select * from fields
+select * from final

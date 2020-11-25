@@ -17,6 +17,17 @@ fields as (
         }}
 
     from base
+),
+
+final as (
+
+    select 
+        id as board_id,
+        name as board_name,
+        type as board_type,
+        _fivetran_synced
+    
+    from fields
 )
 
-select * from fields
+select * from final

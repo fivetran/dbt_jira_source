@@ -15,6 +15,18 @@ fields as (
         }}
 
     from base
+),
+
+final as (
+
+    select
+        description as status_description,
+        id as status_id,
+        name as status_name,
+        status_category_id,
+        _fivetran_synced
+
+    from fields
 )
 
-select * from fields
+select * from final
