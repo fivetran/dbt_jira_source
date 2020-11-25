@@ -12,6 +12,7 @@ vars:
     project: "{{ source('jira', 'project') }}"
     board: "{{ source('jira', 'board') }}"
     user: "{{ source('jira', 'user') }}"
+    epic: "{{ source('jira', 'epic') }}"
     issue_type: "{{ source('jira', 'issue_type') }}"
     status: "{{ source('jira', 'status') }}"
     resolution: "{{ source('jira', 'resolution') }}"
@@ -21,7 +22,7 @@ vars:
     comment: "{{ source('jira', 'comment') }}"
     issue_link: "{{ source('jira', 'issue_link') }}"
     component: "{{ source('jira', 'component') }}"
-    fiekld: "{{ source('jira', 'field') }}"
+    field: "{{ source('jira', 'field') }}"
 
 
 models: 

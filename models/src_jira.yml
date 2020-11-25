@@ -68,9 +68,9 @@ sources:
           - name: key
             description: The epic's key (user-facing id).
           - name: name
-            description: Name of the epic.
+            description: High level name of the epic (the `Epic Link` field of issues).
           - name: summary
-            description: todo - get data synced
+            description: The title of the epic's issue card (all epics are a kind of issue).
         
       - name: field 
         description: Table of all issue fields.
@@ -187,7 +187,7 @@ sources:
           - name: relationship
             description: The nature of the link between the two issues ("blocks", "is duplicated by", "relates to", etc.)
 
-      - name: issue_multi_select_history
+      - name: issue_multiselect_history
         description: >
           Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to **one** value.
         columns:
