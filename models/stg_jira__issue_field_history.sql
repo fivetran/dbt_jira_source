@@ -24,8 +24,8 @@ final as (
     select 
         field_id,
         issue_id,
-        "time" as updated_at,
-        "value" as field_value,
+        "TIME" as updated_at,
+        value as field_value,
         _fivetran_synced
 
     from fields

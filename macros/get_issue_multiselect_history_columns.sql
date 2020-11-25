@@ -10,6 +10,8 @@
 
 {% if target.type == 'redshift' %}
  {{ columns.append( {"name": "time", "datatype": dbt_utils.type_timestamp(), "quote": True } ) }}
+{% elif target.type == 'snowflake' %}
+ {{ columns.append( {"name": "TIME", "datatype": dbt_utils.type_timestamp(), "quote": True } ) }}
 {% else %}
  {{ columns.append( {"name": "time", "datatype": dbt_utils.type_timestamp()} ) }}
 {% endif %}

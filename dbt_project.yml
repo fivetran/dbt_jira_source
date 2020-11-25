@@ -5,7 +5,7 @@ require-dbt-version: [">=0.18.0", "<0.19.0"]
 
 
 vars:
-  jira_schema: jira_3
+  # jira_schema: jira_3
 
   jira_source:
     issue: "{{ source('jira', 'issue') }}"
@@ -28,4 +28,4 @@ vars:
 models: 
   materialized: table # for building the package, switch to views later? 
 
-profile: dev_bigquery_dbt_testing
+profile: integration_test # dev_bigquery_dbt_testing
