@@ -5,26 +5,26 @@ profile: 'integration_tests'
 
 
 vars:
-  jira_source:
-      board: "{{ ref('board') }}"
-      comment: "{{ ref('comment') }}"
-      component: "{{ ref('component') }}"
-      epic: "{{ ref('epic') }}"
-      field_option: "{{ ref('field_option') }}"
-      issue_field_history: "{{ ref('issue_field_history') }}"
-      issue_link: "{{ ref('issue_link') }}"
-      issue_multiselect_history: "{{ ref('issue_multiselect_history') }}"
-      issue_type: "{{ ref('issue_type') }}"
-      issue: "{{ ref('issue') }}"
-      project_board: "{{ ref('project_board') }}"
-      project_category: "{{ ref('project_category') }}"
-      project: "{{ ref('project') }}"
-      resolution: "{{ ref('resolution') }}"
-      sprint: "{{ ref('sprint') }}"
-      status_category: "{{ ref('status_category') }}"
-      status: "{{ ref('status') }}"
-      user_group: "{{ ref('user_group') }}"
-      user: "{{ ref('user') }}"
+  jira_source_integration_tests:
+    board: "{{ ref('board') }}"
+    comment: "{{ ref('comment') }}"
+    component: "{{ ref('component') }}"
+    epic: "{{ ref('epic') }}"
+    field_option: "{{ ref('field_option') }}"
+    issue_field_history: "{{ ref('issue_field_history') }}"
+    issue_link: "{{ ref('issue_link') }}"
+    issue_multiselect_history: "{{ ref('issue_multiselect_history') }}"
+    issue_type: "{{ ref('issue_type') }}"
+    issue: "{{ ref('issue') }}"
+    project_board: "{{ ref('project_board') }}"
+    project_category: "{{ ref('project_category') }}"
+    project: "{{ ref('project') }}"
+    resolution: "{{ ref('resolution') }}"
+    sprint: "{{ ref('sprint') }}"
+    status_category: "{{ ref('status_category') }}"
+    status: "{{ ref('status') }}"
+    user_group: "{{ ref('user_group') }}"
+    user: "{{ ref('user') }}"
 
       # using bools?
 
