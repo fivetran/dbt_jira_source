@@ -25,7 +25,7 @@ final as (
         field_id,
         issue_id,
         time as updated_at,
-        value,
+        value as field_value,
         _fivetran_synced
 
     from fields
