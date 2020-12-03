@@ -28,7 +28,7 @@ final as (
         complete_date as completed_at,
         end_date as ended_at,
         start_date as started_at,
-        _fivetran_synced,
+        _fivetran_synced
 
     from fields
 )
