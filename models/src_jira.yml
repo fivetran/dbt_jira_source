@@ -116,7 +116,7 @@ sources:
           - name: created
             description: Timestamp of when the issue was created (in UTC).
           - name: creator
-            description: Foreign key referencing the `user` who first created the issue.
+            description: Foreign key referencing the `user` who first created the issue. Cannot be changed.
           - name: description
             description: The issue description, if given.
           - name: due_date

@@ -1,0 +1,6 @@
+version: 2
+
+# todo: add docs + tests for stg models
+#       add passthrough column? i don't think people can have custom fields with the new schema...
+# models:
+#   - name: 
