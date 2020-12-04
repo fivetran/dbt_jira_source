@@ -25,7 +25,11 @@ final as (
         _fivetran_id,
         field_id,
         issue_id,
+        {% if target.type == 'bigquery' %}
+        time as updated_at,
+        {% else %}
         "TIME" as updated_at,
+        {% endif %}
         value as field_value,
         _fivetran_synced
         
