@@ -1,43 +1,28 @@
-> Fivetran's starter project which acts as the foundation to building dbt packages
-> Here's a template of the README for both transformation + source packages
+# Jira (Source) 
 
-# [Connector Name] ([docs](home page of the netlify-hosted docs site)) 
+This package models Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1UPq2CWnqQpbjLxkTrcWvAekaZ0o0OdzXODTVmUXeGvs/edit#slide=id.g5f1e6b049a_8_0). **Note: this schema applies to Jira connections set up or fully resynced after September 10, 2020.**
 
-This package models [connector name] data from [Fivetran's connector](https://fivetran.com/docs/applications/connector). It uses data in the format described by [this ERD](link to the connector ERD).
+This package enriches your Fivetran data by doing the following:
+- Adds descriptions to tables and columns that are synced using Fivetran
+- Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
+- Models staging tables, which will be used in our transform package
 
-[High level objective of package]. It achieves this by:
-- [major thing the package does #1]
-- [ #2 ] 
-- [ #3]
-...
+> The Jira source dbt package is compatible with BigQuery, Redshift, and Snowflake.
 
-> The [Connector] dbt package is compatible with BigQuery, Redshift, and Snowflake.
-
-## Models - transformation package version
-
-This package contains transformation models, designed to work simultaneously with our [Connector source package](link to source package repo). A dependency on the source package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. The primary outputs of this package are described below. Intermediate models are used to create these output models.
-
-| **model**                | **description**                                                                                                                                |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [conector__model_1](link to model sql file on github)             | toot toot |
-| [conector__model_2](link to model sql file on github)             | beep beep |
-
-## Models - source package version
-
-This package contains staging models, designed to work simultaneously with our [Connector modeling package](link to transformation package repo).  The staging models:
+## Models
+This package contains staging models, designed to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira).  The staging models:
 * Remove any rows that are soft-deleted
 * Name columns consistently across all packages:
     * Boolean fields are prefixed with `is_` or `has_`
     * Timestamps are appended with `_at`
-    * ID primary keys are prefixed with the name of the table.  For example, a user table's ID column is renamed user_id.
-    * Foreign keys include the table that they refer to. For example, a project table's owner ID column is renamed owner_user_id.
-* [anything else?]
+    * ID primary keys are prefixed with the name of the table.  For example, the issue table's ID column is renamed issue_id.
+    * Foreign keys include the table that they refer to. For example, an issue's assignee user ID column is renamed assignee_user_id.
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
-By default, this package looks for your [Connector] data in the `[connector_name]` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your [Connector] data is, add the following configuration to your `dbt_project.yml` file:
+By default, this package looks for your Jira data in the `jira` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your Jira data is, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -46,24 +31,8 @@ By default, this package looks for your [Connector] data in the `[connector_name
 config-version: 2
 
 vars:
-    connector_database: your_database_name
-    connector_schema: your_schema_name 
-```
-
-### any additional configurations (ie variables)
-[brief explanation]
-
-If you want to [do something], add the following variable to your `dbt_project.yml` file:
-
-```yml
-# dbt_project.yml
-
-...
-config-version: 2
-
-vars:
-  connector:
-    example_list_variable: ['the', 'list', 'of', 'values']
+    jira_database: your_database_name
+    jira_schema: your_schema_name 
 ```
 
 ## Contributions
