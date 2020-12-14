@@ -35,7 +35,7 @@ sources:
           - name: body
             description: Content of the comment.
           - name: created
-            description: Timestamp of when the comment was created. TODO - get timezone clarification
+            description: Timestamp of when the comment was created.
           - name: is_public
             description: Boolean that is true if the comment is visible to all users.
           - name: issue_id 
@@ -59,7 +59,10 @@ sources:
             description: Foreign key referencing the id of the component's `project`.
 
       - name: epic
-        description: Table of epics, which are comprised of smaller user stories.
+        description: > 
+          Table of epics, which are comprised of smaller user stories. 
+          Note: epics from next-gen projects may not appear here, so we will not be using
+          this table in the transformation package.
         columns:
           - name: id
             description: Unique ID of the epic.
@@ -90,8 +93,8 @@ sources:
 
       - name: field_option
         description: >
-          Table of value options for custom multiselect issues. Note: this table does not join with
-          the `field` table.
+          Table of value options for custom multiselect issues only. Note: this table does not join with
+          the `field` table, so we will therefore not be using it in the transformation package.
         columns:
           - name: id
             description: Unique ID of the field option.
@@ -105,12 +108,6 @@ sources:
             description: Unique ID of the issue. 
           - name: _fivetran_deleted
             description: Boolean that is true if the row has been soft-deleted from the source.
-          - name: _original_estimate
-            description: The original estimate of how long working on this issue would take, in seconds. todo - why is this here?
-          - name: _remaining_estimate
-            description: The estimate of how much longer working on this issue will take, in seconds. todo - why is this here?
-          - name: _time_spent
-            description: The time that was spent working on this issue, in seconds.
           - name: assignee
             description: Foreign key referencing the ID of the `user` currently assigned to this task.
           - name: created
@@ -128,7 +125,7 @@ sources:
           - name: key
             description: UI-facing id of the issue.
           - name: last_viewed
-            description: Timestamp of when the user who set up the connector last viewed the issue. TODO - check this out with drew
+            description: Timestamp of when the user who set up the connector last viewed the issue.
           - name: original_estimate
             description: The original estimate of how long working on this issue would take, in seconds.
           - name: parent_id
@@ -146,7 +143,9 @@ sources:
           - name: resolution
             description: Foreign key referencing the ID of the issue's type of `resolution`.
           - name: resolved
-            description: Timestamp of when the issue was resolved (ie completed, marked as duplicate).
+            description: >
+              Timestamp of when the issue was resolved (ie completed, marked as duplicate). If an 
+              issue is marked as un-resolved, this is null.
           - name: status
             description: >
               Foreign key referencing the ID of the issue's `status` (the step that the issue is currently at 
@@ -162,7 +161,7 @@ sources:
           - name: work_ratio
             description: >
               The percentage of work that has been logged against the issue (time_spent) vs the original estimate of worktime.
-              Equals -1.0 when the fields required for calculation are not provided. todo - check this
+              Equals -1.0 when the fields required for calculation are not provided.
 
       - name: issue_field_history
         description: Table of every value that each **custom non-array** (not multiselect) field has been set to.
@@ -229,11 +228,6 @@ sources:
             description: Level of the permission (global vs project).
           - name: _fivetran_deleted
             description: Boolean that is true if the row has been soft-deleted from the source.
-          
-      - name: permission_holder
-        description: Todo 
-      - name: permission_scheme
-        description: todo 
 
       - name: priority
         description: Table of issue priority levels (global).
@@ -282,11 +276,6 @@ sources:
             description: Description of nature of this project grouping.
           - name: name
             description: Name of the project category as it appears in the UI.
-
-      - name: project_role
-        description: todo - not using this table but just wanna document 
-      - name: project_role_actor
-        description: todo - not using this table but just wanna document 
 
       - name: resolution
         description: Table storing the types of resolutions used by your organization.
