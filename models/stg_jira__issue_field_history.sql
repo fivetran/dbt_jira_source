@@ -26,7 +26,10 @@ final as (
         issue_id,
         {% if target.type == 'bigquery' %}
         time as updated_at,
+        {% elif target.type == 'redshift' %}
+        "time" as updated_at,
         {% else %}
+        -- snowflake
         "TIME" as updated_at,
         {% endif %}
         value as field_value,

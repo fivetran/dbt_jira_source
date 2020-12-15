@@ -216,7 +216,7 @@ sources:
             description: Boolean that is true if this type of issue is a subtask.
 
       - name: permission
-        description: Table of privileges users can be granted in Jira.
+        description: Table of privileges users can be granted in Jira. This is not used in the transformation package.
         columns: 
           - name: id
             description: Unique (and descriptive) ID of the user permission (ie "ASSIGN_ISSUES", "CREATE_PROJECT")
