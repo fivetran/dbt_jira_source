@@ -72,9 +72,9 @@ models:
         description: Timestamp of when the issue was created (in UTC).
       - name: creator_user_id
         description: Foreign key referencing the `user` who first created the issue. Cannot be changed.
-      - name: description
-        description: The issue description, if given.
       - name: issue_description
+        description: The issue description, if given.
+      - name: due_date
         description: Calendar day on which the issue is due, if a due date is provided.
       - name: environment
         description: Text field describing the environment in which the issue occurred (ie "IE9 on Windows 7").
