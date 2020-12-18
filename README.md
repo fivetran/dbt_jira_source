@@ -2,7 +2,7 @@
 
 This package models Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1UPq2CWnqQpbjLxkTrcWvAekaZ0o0OdzXODTVmUXeGvs/edit#slide=id.g5f1e6b049a_8_0). 
 
-> Note: this schema applies to Jira connectors set up or fully re-synced after September 10, 2020.
+> Note: This schema applies to Jira connectors set up or fully re-synced after September 10, 2020.
 
 This package enriches your Fivetran data by doing the following:
 - Adds descriptions to tables and columns that are synced using Fivetran
