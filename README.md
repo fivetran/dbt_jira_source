@@ -1,6 +1,8 @@
 # Jira (Source) 
 
-This package models Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1UPq2CWnqQpbjLxkTrcWvAekaZ0o0OdzXODTVmUXeGvs/edit#slide=id.g5f1e6b049a_8_0). **Note: this schema applies to Jira connections set up or fully resynced after September 10, 2020.**
+This package models Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1UPq2CWnqQpbjLxkTrcWvAekaZ0o0OdzXODTVmUXeGvs/edit#slide=id.g5f1e6b049a_8_0). 
+
+> Note: This schema applies to Jira connectors set up or fully re-synced after September 10, 2020.
 
 This package enriches your Fivetran data by doing the following:
 - Adds descriptions to tables and columns that are synced using Fivetran
@@ -11,12 +13,12 @@ This package enriches your Fivetran data by doing the following:
 
 ## Models
 This package contains staging models, designed to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira).  The staging models:
-* Remove any rows that are soft-deleted
-* Name columns consistently across all packages:
-    * Boolean fields are prefixed with `is_` or `has_`
-    * Timestamps are appended with `_at`
-    * ID primary keys are prefixed with the name of the table.  For example, the `issue` table's ID column is renamed `issue_id`.
-    * Foreign keys include the table that they refer to. For example, an issue's `assignee` user ID column is renamed `assignee_user_id`.
+- Remove any rows that are soft-deleted
+- Name columns consistently across all packages:
+    - Boolean fields are prefixed with `is_` or `has_`
+    - Timestamps are appended with `_at`
+    - ID primary keys are prefixed with the name of the table.  For example, the `issue` table's ID column is renamed `issue_id`.
+    - Foreign keys include the table that they refer to. For example, an issue's `assignee` user ID column is renamed `assignee_user_id`.
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
