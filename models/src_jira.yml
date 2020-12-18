@@ -57,23 +57,6 @@ sources:
             description: UI-facing name of the component.
           - name: project_id
             description: Foreign key referencing the id of the component's `project`.
-
-      - name: epic
-        description: > 
-          Table of epics, which are comprised of smaller user stories. 
-          Note: epics from next-gen projects may not appear here, so we will not be using
-          this table in the transformation package.
-        columns:
-          - name: id
-            description: Unique ID of the epic.
-          - name: done
-            description: Boolean that is true if the epic is completed, false otherwise.
-          - name: key
-            description: The epic's key (user-facing id).
-          - name: name
-            description: High level name of the epic (the `Epic Link` field of issues).
-          - name: summary
-            description: The title of the epic's issue card (all epics are a kind of issue).
         
       - name: field 
         description: Table of all issue fields.
@@ -90,16 +73,6 @@ sources:
               it is default to Jira.
           - name: name
             description: Name of the field as it appears on issue cards.
-
-      - name: field_option
-        description: >
-          Table of value options for custom multiselect issues only. Note: this table does not join with
-          the `field` table, so we will therefore not be using it in the transformation package.
-        columns:
-          - name: id
-            description: Unique ID of the field option.
-          - name: name
-            description: Value of the option as it appears in the UI.
 
       - name: issue
         description: Table of all issues in your organization's Jira (captures soft deletes).
@@ -215,20 +188,6 @@ sources:
           - name: subtask
             description: Boolean that is true if this type of issue is a subtask.
 
-      - name: permission
-        description: Table of privileges users can be granted in Jira. This is not used in the transformation package.
-        columns: 
-          - name: id
-            description: Unique (and descriptive) ID of the user permission (ie "ASSIGN_ISSUES", "CREATE_PROJECT")
-          - name: description
-            description: Description of what this privilege permits users to do. 
-          - name: name
-            description: Name of the permission as it appears in the UI.
-          - name: type
-            description: Level of the permission (global vs project).
-          - name: _fivetran_deleted
-            description: Boolean that is true if the row has been soft-deleted from the source.
-
       - name: priority
         description: Table of issue priority levels (global).
         columns:
@@ -258,24 +217,6 @@ sources:
             description: Foreign key referencing the ID of the `project_category` that the project is associated with, if any.
           - name: project_type_key
             description: ID of the type of project (ie 'software').
-      
-      - name: project_board
-        description: Table relating projects to boards.
-        columns:
-          - name: board_id
-            description: Foreign key referencing the ID of the `board` for this project.
-          - name: project_id
-            description: Foreign key referencing the ID of the `project` that the board belongs to.
-        
-      - name: project_category  
-        description: Table storing project categories.
-        columns:
-          - name: id
-            description: Unique ID of the project category.
-          - name: description
-            description: Description of nature of this project grouping.
-          - name: name
-            description: Name of the project category as it appears in the UI.
 
       - name: resolution
         description: Table storing the types of resolutions used by your organization.
@@ -317,14 +258,6 @@ sources:
           - name: status_category_id
             description: Foreign key referencing the ID of the `status_category` that this project status falls under.
 
-      - name: status_category
-        description: Table of umbrella categories that project-level statuses belong to.
-        columns:
-          - name: id
-            description: Unique ID of the status category. 
-          - name: name
-            description: Name of the status category. 
-
       - name: user
         description: Table of users associated with your organization.
         columns:
@@ -340,54 +273,3 @@ sources:
             description: The user's timezone, as defined in their settings.
           - name: username
             description: Account username.
-
-      - name: user_group
-        description: Table relating users to any Jira groups that they belong to.
-        columns:
-          - name: group_name
-            description: Display name of the group.
-          - name: user_id 
-            description: Foreign key referencing the ID of the `user` belonging to the group.
-
-      - name: version
-        description: Table containing project versions (which become releases)
-        columns:
-          - name: id
-            description: Unique ID of the version.
-          - name: archived
-            description: Boolean that is true if the version has been archived.
-          - name: description
-            description: Description of the project version.
-          - name: name
-            description: Title of the version.
-          - name: overdue
-            description: Boolean that is true if the project version was released overdue.
-          - name: project_id
-            description: Foreign key referencing the ID of the `project` being released.
-          - name: release_date
-            description: Calendar date of when the version was released.
-          - name: released
-            description: Boolean that is true if the version has been released, false otherwise.
-          - name: start_date
-            description: Calendar start date of work on the version.
-        
-      - name: worklog
-        description: Table of worklog efforts on issues. Not used by the package.
-        columns:
-          - name: id
-            description: ID of the worktime log (unique to the issue). 
-          - name: issue_id  
-            description: Foreign key referencing the ID of the `issue` that was worked on.
-          - name: author_id
-            description: Foreign key referencing the ID of the `user` who logged worktime.
-          - name: comment
-            description: Description of the logged work, if provided.
-          - name: started 
-            description: Timestamp of when the worklog effort was started.
-          - name: time_spent_seconds
-            description: In seconds, the time logged working on this effort. 
-          - name: update_author_id 
-            description: Foreign key referencing the ID of the `user` who last updated this worklog (the `author_id` if no one has updated it since creation).
-          - name: updated
-            description: Timestamp of when the worklog was last updated.
-
