@@ -22,7 +22,7 @@ fields as (
 final as (
     
     select 
-        field_id,
+        cast(field_id as {{ dbt_utils.type_string() }}) as field_id,
         issue_id,
         {% if target.type == 'bigquery' %}
         time as updated_at,
