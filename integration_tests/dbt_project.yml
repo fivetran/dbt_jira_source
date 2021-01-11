@@ -6,7 +6,6 @@ profile: 'integration_tests'
 
 vars:
   jira_source:
-    board: "{{ ref('board') }}"
     comment: "{{ ref('comment') }}"
     component: "{{ ref('component') }}"
     epic: "{{ ref('epic') }}"
@@ -34,9 +33,6 @@ seeds:
   jira_source_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
-    board:
-      +column_types:
-        id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
     comment:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"

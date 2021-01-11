@@ -8,7 +8,6 @@ vars:
   jira_source:
     issue: "{{ source('jira', 'issue') }}"
     project: "{{ source('jira', 'project') }}"
-    board: "{{ source('jira', 'board') }}"
     user: "{{ source('jira', 'user') }}"
     issue_type: "{{ source('jira', 'issue_type') }}"
     status: "{{ source('jira', 'status') }}"
