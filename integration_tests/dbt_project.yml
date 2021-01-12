@@ -54,7 +54,6 @@ seeds:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         created: timestamp
-        work_ratio: float
         resolved: timestamp
         assignee: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
     issue_multiselect_history:
