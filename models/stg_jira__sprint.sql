@@ -1,4 +1,4 @@
-{{ config(enabled=var('using_sprints', True)) }}
+{{ config(enabled=var('jira_using_sprints', True)) }}
 
 with base as (
 
