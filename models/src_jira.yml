@@ -15,16 +15,6 @@ sources:
       error_after: {count: 96, period: hour}
 
     tables:
-      - name: board
-        description: Table of project boards belonging to the organization.
-        columns:
-          - name: id 
-            description: Unique ID of the board.
-          - name: name
-            description: Name of the board.
-          - name: type
-            description: Type of agile board (ie simple vs scrum).
-
       - name: comment
         description: Table of comments made on issues.
         columns:

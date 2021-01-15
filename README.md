@@ -37,6 +37,22 @@ vars:
     jira_schema: your_schema_name 
 ```
 
+### Disabling models
+
+It's possible that your Jira connector does not sync every table that this package expects. If your syncs exclude certain tables, it is because you either don't use that functionality in Jira or actively excluded some tables from your syncs. To disable the corresponding functionality in the package, you must add the relevant variables. By default, all variables are assumed to be `true`. Add variables for only the tables you would like to disable:  
+
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+vars:
+  jira_source:
+    using_sprints: false   # Disable if you do not have the sprint table, or if you do not want sprint related metrics reported
+```
+
+
 ## Contributions
 Additional contributions to this package are very welcome! Please create issues
 or open PRs against `master`. Check out 

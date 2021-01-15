@@ -6,7 +6,6 @@ profile: 'integration_tests'
 
 vars:
   jira_source:
-    board: "{{ ref('board') }}"
     comment: "{{ ref('comment') }}"
     component: "{{ ref('component') }}"
     epic: "{{ ref('epic') }}"
@@ -27,8 +26,6 @@ vars:
     status: "{{ ref('status') }}"
     user_group: "{{ ref('user_group') }}"
     user: "{{ ref('user') }}"
-
-      # using bools?
 
 seeds:
   jira_source_integration_tests:
@@ -58,3 +55,24 @@ seeds:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
         created: timestamp
         work_ratio: float
+        resolved: timestamp
+        assignee: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
+    issue_multiselect_history:
+      +column_types:
+        time: timestamp
+        issue_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        value: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
+    issue_field_history:
+      +column_types:
+        time: timestamp
+        issue_id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        value: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
+    sprint: 
+      +column_types:
+        id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
+        complete_date: timestamp
+        end_date: timestamp
+        start_date: timestamp
+    field: 
+      +column_types:
+        id: "{{ 'string' if target.name == 'bigquery' else 'varchar' }}"
