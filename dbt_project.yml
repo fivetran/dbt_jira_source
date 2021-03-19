@@ -21,6 +21,7 @@ vars:
     field: "{{ source('jira', 'field') }}"
     sprint: "{{ source('jira', 'sprint') }}"
     jira_using_sprints: true # disable if you are not using sprints in Jira
+    jira_using_components: true # disable if you are not using components in Jira
 
 
 models:
