@@ -58,6 +58,16 @@ models:
       - name: field_name
         description: Name of the field as it appears on issue cards.
 
+  - name: stg_jira__field_option
+    description: Table of all options related to custom fields.
+    columns:
+      - name: field_id
+        description: The ID of the custom field.
+        tests:
+          - not_null
+      - name: name
+        description: Name of the field option.
+
   - name: stg_jira__issue
     description: Table of all issues in your organization's Jira (captures soft deletes).
     columns:

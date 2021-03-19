@@ -64,6 +64,14 @@ sources:
           - name: name
             description: Name of the field as it appears on issue cards.
 
+      - name: field_option
+        description: Table of all options related to custom fields.
+        columns:
+          - name: id
+            description: The ID of the custom field.
+          - name: name
+            description: Name of the field option.
+
       - name: issue
         description: Table of all issues in your organization's Jira (captures soft deletes).
         columns:

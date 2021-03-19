@@ -19,6 +19,7 @@ vars:
     issue_link: "{{ source('jira', 'issue_link') }}"
     component: "{{ source('jira', 'component') }}"
     field: "{{ source('jira', 'field') }}"
+    field_option: "{{ source('jira', 'field_option') }}"
     sprint: "{{ source('jira', 'sprint') }}"
     jira_using_sprints: true # disable if you are not using sprints in Jira
 
