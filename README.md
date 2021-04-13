@@ -1,6 +1,6 @@
 # Jira (Source) 
 
-This package models Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1UPq2CWnqQpbjLxkTrcWvAekaZ0o0OdzXODTVmUXeGvs/edit#slide=id.g5f1e6b049a_8_0). 
+This package models Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation).
 
 > Note: This schema applies to Jira connectors set up or fully re-synced after September 10, 2020.
 
@@ -8,8 +8,6 @@ This package enriches your Fivetran data by doing the following:
 - Adds descriptions to tables and columns that are synced using Fivetran
 - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 - Models staging tables, which will be used in our transform package
-
-> The Jira source dbt package is compatible with BigQuery, Redshift, and Snowflake.
 
 ## Models
 This package contains staging models, designed to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira).  The staging models:
@@ -48,16 +46,30 @@ It's possible that your Jira connector does not sync every table that this packa
 config-version: 2
 
 vars:
-  jira_source:
     jira_using_sprints: false   # Disable if you do not have the sprint table, or if you do not want sprint related metrics reported
+    jira_using_components: false # Disable if you do not have the component table, or if you do not want component related metrics reported
 ```
 
+### Changing the Build Schema
+By default this package will build the Jira staging models within a schema titled (<target_schema> + `_stg_jira`) in your target database. If this is not where you would like your Jira staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+
+```yml
+# dbt_project.yml
+
+...
+models:
+    jira_source:
+      +schema: my_new_schema_name # leave blank for just the target_schema
+```
 
 ## Contributions
 Additional contributions to this package are very welcome! Please create issues
 or open PRs against `master`. Check out 
 [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) 
 on the best workflow for contributing to a package.
+
+## Database Support
+This package has been tested on BigQuery, Snowflake and Redshift.
 
 ## Resources:
 - Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
