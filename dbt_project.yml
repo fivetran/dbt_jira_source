@@ -1,5 +1,5 @@
 name: 'jira_source'
-version: '0.1.1'
+version: '0.2.0'
 config-version: 2
 require-dbt-version: [">=0.18.0", "<0.20.0"]
 
@@ -28,5 +28,6 @@ vars:
 models:
   jira_source:
     tmp:
-      materialized: view
-    materialized: table
+      +materialized: view
+    +materialized: table
+    +schema: stg_jira
