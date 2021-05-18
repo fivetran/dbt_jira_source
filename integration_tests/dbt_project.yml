@@ -1,5 +1,5 @@
 name: 'jira_source_integration_tests'
-version: '0.2.0'
+version: '0.2.1'
 config-version: 2
 profile: 'integration_tests'
 
@@ -9,7 +9,7 @@ vars:
     comment: "{{ ref('comment') }}"
     component: "{{ ref('component') }}"
     epic: "{{ ref('epic') }}"
-    field: "{{ ref('field_option') }}"
+    field: "{{ ref('field') }}"
     field_option: "{{ ref('field_option') }}"
     issue_field_history: "{{ ref('issue_field_history') }}"
     issue_link: "{{ ref('issue_link') }}"
