@@ -27,6 +27,8 @@ vars:
     user_group: "{{ ref('user_group') }}"
     user: "{{ ref('user') }}"
 
+    jira_schema: jira_source_integration_tests
+
 seeds:
   jira_source_integration_tests:
     +column_types:
