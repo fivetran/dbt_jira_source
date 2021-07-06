@@ -267,6 +267,17 @@ models:
       - name: status_category_id
         description: Foreign key referencing the ID of the `status_category` that this project status falls under.
 
+  - name: stg_jira__status_category
+    description: Table of umbrella status categories.
+    columns:
+      - name: status_category_id
+        description: Unique ID of the status category.
+        tests:
+          - unique
+          - not_null
+      - name: status_name
+        description: Title of the status category.
+
   - name: stg_jira__user
     description: Table of users associated with your organization.
     columns:

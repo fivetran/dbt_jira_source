@@ -11,6 +11,7 @@ vars:
     user: "{{ source('jira', 'user') }}"
     issue_type: "{{ source('jira', 'issue_type') }}"
     status: "{{ source('jira', 'status') }}"
+    status_category: "{{ source('jira', 'status_category') }}"
     resolution: "{{ source('jira', 'resolution') }}"
     priority: "{{ source('jira', 'priority') }}"
     issue_multiselect_history: "{{ source('jira', 'issue_multiselect_history') }}"

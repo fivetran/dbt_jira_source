@@ -26,6 +26,7 @@ vars:
     status: "{{ ref('status') }}"
     user_group: "{{ ref('user_group') }}"
     user: "{{ ref('user') }}"
+    version: "{{ ref('version') }}"
 
     jira_schema: jira_source_integration_tests
 

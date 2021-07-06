@@ -256,6 +256,14 @@ sources:
           - name: status_category_id
             description: Foreign key referencing the ID of the `status_category` that this project status falls under.
 
+      - name: status_category
+        description: Table of overarching status categories.
+        columns:
+          - name: id
+            description: Unique ID of the status category.
+          - name: name
+            description: Title of the status category.
+
       - name: user
         description: Table of users associated with your organization.
         columns:
