@@ -4,7 +4,7 @@ version: 2
 
 sources:
   - name: jira 
-    database: "{{ var ('jira_database', target.database) }}"
+    database: "{% if target.type != 'spark'%}{{ var('jira_database', target.database) }}{% endif %}"
     schema: "{{ var ('jira_schema', 'jira') }}"
 
     loader: fivetran
