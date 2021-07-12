@@ -19,6 +19,14 @@ This package contains staging models, designed to work simultaneously with our [
     - Foreign keys include the table that they refer to. For example, an issue's `assignee` user ID column is renamed `assignee_user_id`.
 
 ## Installation Instructions
+Add the following to your `packages.yml` file:
+```yml
+# packages.yml
+packages:
+  - package: fivetran/jira_source
+    version: [">=0.2.0", "<0.3.0"]
+```
+
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
@@ -69,7 +77,7 @@ or open PRs against `master`. Check out
 on the best workflow for contributing to a package.
 
 ## Database Support
-This package has been tested on BigQuery, Snowflake and Redshift.
+This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks.
 
 ## Resources:
 - Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next

@@ -25,14 +25,13 @@ final as (
         _fivetran_id,
         cast(field_id as {{ dbt_utils.type_string() }}) as field_id,
         issue_id,
-        {% if target.type == 'bigquery' %}
-        time as updated_at,
+        {% if target.type == 'snowflake' %}
+        "TIME"
         {% elif target.type == 'redshift' %}
-        "time" as updated_at,
+        "time"
         {% else %}
-        -- snowflake
-        "TIME" as updated_at,
-        {% endif %}
+        time
+        {% endif %} as updated_at,
         value as field_value,
         _fivetran_synced
         

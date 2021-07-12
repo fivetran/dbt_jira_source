@@ -1,5 +1,5 @@
 name: 'jira_source'
-version: '0.2.1'
+version: '0.2.2'
 config-version: 2
 require-dbt-version: [">=0.18.0", "<0.20.0"]
 
@@ -11,6 +11,7 @@ vars:
     user: "{{ source('jira', 'user') }}"
     issue_type: "{{ source('jira', 'issue_type') }}"
     status: "{{ source('jira', 'status') }}"
+    status_category: "{{ source('jira', 'status_category') }}"
     resolution: "{{ source('jira', 'resolution') }}"
     priority: "{{ source('jira', 'priority') }}"
     issue_multiselect_history: "{{ source('jira', 'issue_multiselect_history') }}"
@@ -21,9 +22,12 @@ vars:
     field: "{{ source('jira', 'field') }}"
     field_option: "{{ source('jira', 'field_option') }}"
     sprint: "{{ source('jira', 'sprint') }}"
+    version: "{{ source('jira', 'version') }}"
     jira_using_sprints: true # disable if you are not using sprints in Jira
     jira_using_components: true # disable if you are not using components in Jira
 
+  dbt_utils_dispatch_list: [spark_utils, fivetran_utils]
+  fivetran_utils_dispatch_list: [spark_utils]
 
 models:
   jira_source:

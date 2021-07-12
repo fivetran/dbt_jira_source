@@ -4,7 +4,7 @@ version: 2
 
 sources:
   - name: jira 
-    database: "{{ var ('jira_database', target.database) }}"
+    database: "{% if target.type != 'spark'%}{{ var('jira_database', target.database) }}{% endif %}"
     schema: "{{ var ('jira_schema', 'jira') }}"
 
     loader: fivetran
@@ -256,6 +256,14 @@ sources:
           - name: status_category_id
             description: Foreign key referencing the ID of the `status_category` that this project status falls under.
 
+      - name: status_category
+        description: Table of overarching status categories.
+        columns:
+          - name: id
+            description: Unique ID of the status category.
+          - name: name
+            description: Title of the status category.
+
       - name: user
         description: Table of users associated with your organization.
         columns:
@@ -271,3 +279,25 @@ sources:
             description: The user's timezone, as defined in their settings.
           - name: username
             description: Account username.
+      
+      - name: version
+        description: Table of project versions in your organization.
+        columns:
+          - name: archived
+            description: Boolean that is true if the project version has been archived.
+          - name: description
+            description: The optional description given to the version.
+          - name: id
+            description: Unique ID of the version.
+          - name: name
+            description: Unique name of the version.
+          - name: overdue
+            description: Boolean that is true if the version is past its optional release date, false if it is not or if it does not have a due date.
+          - name: project_id
+            description: Foreign key referencing the `PROJECT` to which this version is attached.
+          - name: release_date
+            description: The optional release date of the version. Expressed in ISO 8601 format (yyyy-mm-dd).
+          - name: released
+            description: Boolean that is true if the version has been released. If the version is released a request to release again is ignored
+          - name: start_date
+            description: The start date of the version. Expressed in ISO 8601 format (yyyy-mm-dd).
