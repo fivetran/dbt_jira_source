@@ -1,7 +1,7 @@
 name: 'jira_source'
-version: '0.2.2'
+version: '0.3.0'
 config-version: 2
-require-dbt-version: [">=0.18.0", "<0.20.0"]
+require-dbt-version: ">=0.20.0"
 
 
 vars:
@@ -25,9 +25,6 @@ vars:
     version: "{{ source('jira', 'version') }}"
     jira_using_sprints: true # disable if you are not using sprints in Jira
     jira_using_components: true # disable if you are not using components in Jira
-
-  dbt_utils_dispatch_list: [spark_utils, fivetran_utils]
-  fivetran_utils_dispatch_list: [spark_utils]
 
 models:
   jira_source:
