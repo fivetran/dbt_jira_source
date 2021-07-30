@@ -24,7 +24,7 @@ vars:
     sprint: "{{ source('jira', 'sprint') }}"
     version: "{{ source('jira', 'version') }}"
     jira_using_sprints: true # disable if you are not using sprints in Jira
-    jira_using_components: true # disable if you are not using components in Jiraå
+    jira_using_components: true # disable if you are not using components in Jira
 
 
 models:
