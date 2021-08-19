@@ -57,6 +57,7 @@ config-version: 2
 vars:
     jira_using_sprints: false   # Disable if you do not have the sprint table, or if you do not want sprint related metrics reported
     jira_using_components: false # Disable if you do not have the component table, or if you do not want component related metrics reported
+    jira_using_versions: false # Disable if you do not have the versions table, or if you do not want versions related metrics reported
 ```
 
 ### Changing the Build Schema

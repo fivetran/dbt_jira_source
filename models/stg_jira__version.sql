@@ -1,3 +1,4 @@
+{{ config(enabled=var('jira_using_version', True)) }}
 
 with base as (
 
