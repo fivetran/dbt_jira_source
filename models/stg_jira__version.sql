@@ -1,4 +1,4 @@
-{{ config(enabled=var('jira_using_version', True)) }}
+{{ config(enabled=var('jira_using_versions', True)) }}
 
 with base as (
 
