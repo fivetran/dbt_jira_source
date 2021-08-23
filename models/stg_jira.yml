@@ -65,8 +65,19 @@ models:
         description: The ID of the custom field.
         tests:
           - not_null
-      - name: name
+      - name: field_option_name
         description: Name of the field option.
+
+  - name: stg_jira__issue_link 
+    description: >
+      Table of relationships (links) created between issues. Issue links can include blockers, clones/duplicates, and general relationships.
+    columns:
+      - name: issue_id
+        description: Foreign key referencing the ID of the `issue` that is the subject of this relationship (the linker).
+      - name: related_issue_id
+        description: Foreign key referencing the ID of the `issue` that is the object of this relationship (the linkee).
+      - name: relationship
+        description: The nature of the link between the two issues ("blocks", "is duplicated by", "relates to", etc.)
 
   - name: stg_jira__issue
     description: Table of all issues in your organization's Jira (captures soft deletes).
@@ -275,7 +286,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: status_name
+      - name: status_category_name
         description: Title of the status category.
 
   - name: stg_jira__user

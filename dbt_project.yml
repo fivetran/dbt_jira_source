@@ -1,5 +1,5 @@
 name: 'jira_source'
-version: '0.3.0'
+version: '0.3.1'
 config-version: 2
 require-dbt-version: ">=0.20.0"
 
@@ -25,6 +25,7 @@ vars:
     version: "{{ source('jira', 'version') }}"
     jira_using_sprints: true # disable if you are not using sprints in Jira
     jira_using_components: true # disable if you are not using components in Jira
+    jira_using_versions: true # disable if you are not using versions in Jira
 
 
 models:
