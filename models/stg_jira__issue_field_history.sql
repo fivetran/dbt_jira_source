@@ -24,13 +24,14 @@ final as (
     select 
         cast(field_id as {{ dbt_utils.type_string() }}) as field_id,
         issue_id,
-        {% if target.type == 'snowflake' %}
+        cast(
+        {% if target.type == 'snowflake' -%}
         "TIME"
-        {% elif target.type == 'redshift' %}
-        cast("time" as timestamp without time zone)
-        {% else %}
+        {% elif target.type == 'redshift' -%}
+        "time"
+        {% else -%}
         time
-        {% endif %} as updated_at,
+        {%- endif -%} as {{ dbt_utils.type_timestamp() }} ) as updated_at,
         value as field_value,
         _fivetran_synced
 
