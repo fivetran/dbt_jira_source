@@ -29,7 +29,7 @@ final as (
         {% elif target.type == 'redshift' -%}
         cast("time" as timestamp without time zone )
         {% else -%}
-        time as {{ dbt_utils.type_timestamp() }} ) 
+        cast(time as {{ dbt_utils.type_timestamp() }} ) 
         {% endif %} as updated_at,
         value as field_value,
         _fivetran_synced
