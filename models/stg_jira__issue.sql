@@ -30,7 +30,7 @@ final as (
         {% if target.type == 'redshift' -%}
             cast(created as timestamp without time zone)
         {% else -%}
-            created 
+            created
         {% endif %} as created_at,
         creator as creator_user_id,
         description as issue_description,
