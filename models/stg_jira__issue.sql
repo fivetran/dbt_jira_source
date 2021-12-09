@@ -28,10 +28,12 @@ final as (
         coalesce(time_spent, _time_spent) as time_spent_seconds,
         assignee as assignee_user_id,
         {% if target.type == 'redshift' -%}
-            cast(created as timestamp without time zone)
+            cast(created as timestamp without time zone) as created_at,
+            cast(resolved as timestamp without time zone) as resolved_at,
         {% else -%}
-            created
-        {% endif %} as created_at,
+            created as created_at,
+            resolved as resolved_at,
+        {% endif %}
         creator as creator_user_id,
         description as issue_description,
         due_date,
@@ -44,11 +46,6 @@ final as (
         project as project_id,
         reporter as reporter_user_id,
         resolution as resolution_id,
-        {% if target.type == 'redshift' -%}
-            cast(resolved as timestamp without time zone)
-        {% else -%}
-            resolved
-        {% endif %} as resolved_at,
         status as status_id,
         status_category_changed as status_changed_at,
         summary as issue_name,
