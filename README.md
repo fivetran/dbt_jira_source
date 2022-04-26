@@ -17,7 +17,7 @@
 # 📣 What does this dbt package do?
 This package cleans, tests, and prepares Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira) for analysis. It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation) and is intended to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira).
 
-Refer to the DAG below for a detailed view of all models materialized by default within this package. Additionally, refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) for more details about these models. 
+Refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) for more details about these models. 
 
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [Jira connector](https://fivetran.com/docs/applications/Jira)
