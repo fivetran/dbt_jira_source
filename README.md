@@ -89,7 +89,7 @@ The Fivetran team maintaining this package **only** maintains the latest version
 ## Contributions
 These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
 
-We highly encourage and welcome contributions to this package. Please refer to the [CONTRIBUTING.md](https://github.com/fivetran/dbt_jira_source/blob/main/CONTRIBUTING.md) doc for details on how to effectively contribute to this open source project!
+We highly encourage and welcome contributions to this package. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package!
 
 # 🏪 Are there any resources available?
 - If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
