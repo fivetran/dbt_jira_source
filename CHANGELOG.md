@@ -1,3 +1,5 @@
+# dbt_jira_source v0.5.0
+
 # dbt_jira_source v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨

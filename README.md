@@ -1,14 +1,27 @@
-![![Apache License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) 
-![dbt-core](https://img.shields.io/badge/dbt_core-version_>=1.0.0_<2.0.0-orange.svg)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![Contributions Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
+<p align="center">
+    <a alt="Licensce">
+        <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
+    <a alt="Fivetran-State">
+        <img src="https://img.shields.io/badge/Fivetran State-_Beta-orange.svg" /></a>
+    <a alt="dbt-core">
+        <img src="https://img.shields.io/badge/dbt_core-version_>=1.0.0_<2.0.0-orange.svg" /></a>
+    <a alt="Maintained?">
+        <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
+    <a alt="PRs">
+        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" /></a>
+</p>
 
 # Jira Source dbt Package
 # 📣 What does this dbt package do?
 This package cleans, tests, and preps Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation).
 
 Refer to the DAG below for a detailed view of all models materialized by default within this package.
+
+<p align="center">
+        <a alt="dag" href="https://fivetran.github.io/dbt_jira_source/#!/overview?g_v=1">
+        <img src="static/jira_source_dag.png"/></a>
+</p>
+
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [Jira connector](https://fivetran.com/docs/applications/Jira)
 - You use dbt
