@@ -1,19 +1,21 @@
 <p align="center">
-    <a alt="Licensce">
+    <a alt="License"
+        href="https://github.com/fivetran/dbt_jira/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
-    <a alt="Fivetran-State">
-        <img src="https://img.shields.io/badge/Fivetran State-_Beta-orange.svg" /></a>
+    <a alt="Fivetran-Release"
+        href="https://fivetran.com/docs/getting-started/core-concepts#releasephases">
+        <img src="https://img.shields.io/badge/Fivetran Release Phase-_Beta-orange.svg" /></a>
     <a alt="dbt-core">
         <img src="https://img.shields.io/badge/dbt_core-version_>=1.0.0_<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
         <img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
     <a alt="PRs">
-        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" /></a>
+        <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
 # Jira Source dbt Package
 # 📣 What does this dbt package do?
-This package cleans, tests, and preps Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation).
+This package cleans, tests, and prepares Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira) for analysis. It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation) and is intended to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira).
 
 Refer to the DAG below for a detailed view of all models materialized by default within this package. Additionally, refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) for more details about these models. 
 
@@ -27,7 +29,7 @@ To effectively install this package and leverage the pre-made models, you will f
 ## Step 1: Pre-Requisites
 You will need to ensure you have the following before leveraging the dbt package.
 - **Connector**: Have the Fivetran Jira connector syncing data into your warehouse. 
-- **Database support**: This package has been tested on BigQuery, Snowflake, Redshift, and Postgres. Ensure you are using one of these supported databases.
+- **Database support**: This package has been tested on **BigQuery**, **Snowflake**, **Redshift**, and **Postgres**. Ensure you are using one of these supported databases.
 - **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 ## Step 2: Installing the Package
 Include the following jira_source package version in your `packages.yml`
@@ -46,7 +48,7 @@ vars:
     jira_database: your_database_name
     jira_schema: your_schema_name 
 ```
-### Disabling Model Variables
+### Disabling Components
 Your Jira connector might not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your root `dbt_project.yml` file:
 
 ```yml
