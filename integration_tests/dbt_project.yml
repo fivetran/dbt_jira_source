@@ -79,7 +79,3 @@ seeds:
     field: 
       +column_types:
         id: "{{ 'string' if target.name in ('bigquery', 'spark') else 'varchar' }}"
-
-dispatch:
-  - macro_namespace: dbt_utils
-    search_order: ['spark_utils', 'dbt_utils']

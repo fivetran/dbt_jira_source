@@ -15,12 +15,7 @@
 # 📣 What does this dbt package do?
 This package cleans, tests, and preps Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation).
 
-Refer to the DAG below for a detailed view of all models materialized by default within this package. Additionally, refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source) for more details about these models. 
-
-<p align="center">
-        <a alt="dag" href="https://fivetran.github.io/dbt_jira_source/#!/overview?g_v=1">
-        <img align="center" style="max-width:600px;" src="docs/src/jira_source_models.png"/></a>
-</p>
+Refer to the DAG below for a detailed view of all models materialized by default within this package. Additionally, refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) for more details about these models. 
 
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [Jira connector](https://fivetran.com/docs/applications/Jira)
@@ -32,7 +27,7 @@ To effectively install this package and leverage the pre-made models, you will f
 ## Step 1: Pre-Requisites
 You will need to ensure you have the following before leveraging the dbt package.
 - **Connector**: Have the Fivetran Jira connector syncing data into your warehouse. 
-- **Database support**: This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks. Ensure you are using one of these supported databases.
+- **Database support**: This package has been tested on BigQuery, Snowflake, Redshift, and Postgres. Ensure you are using one of these supported databases.
 - **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 ## Step 2: Installing the Package
 Include the following jira_source package version in your `packages.yml`
@@ -83,10 +78,9 @@ This dbt package is dependent on the following dbt packages. For more informatio
 packages:
     - package: fivetran/fivetran_utils
       version: [">=0.3.0", "<0.4.0"]
+
     - package: dbt-labs/dbt_utils
       version: [">=0.8.0", "<0.9.0"]
-    - package: dbt-labs/spark_utils
-      version: [">=0.3.0", "<0.4.0"]
 ```
 # 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
