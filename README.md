@@ -25,13 +25,13 @@ Refer to the DAG below for a detailed view of all models materialized by default
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [Jira connector](https://fivetran.com/docs/applications/Jira)
 - You use dbt
-- You want a staging layer that cleans, tests, and prepares your GitHub data
+- You want a staging layer that cleans, tests, and prepares your Jira data for analysis
 - (Optional) You want to make use of the [Jira Modeling dbt Package](https://github.com/fivetran/dbt_jira)
 # 🎯 How do I use the dbt package?
 To effectively install this package and leverage the pre-made models, you will follow the below steps:
 ## Step 1: Pre-Requisites
 You will need to ensure you have the following before leveraging the dbt package.
-- **Connector**: Have the Fivetran GitHub connector syncing data into your warehouse. 
+- **Connector**: Have the Fivetran Jira connector syncing data into your warehouse. 
 - **Database support**: This package has been tested on BigQuery, Snowflake, Redshift, Postgres, and Databricks. Ensure you are using one of these supported databases.
 - **dbt Version**: This dbt package requires you have a functional dbt project that utilizes a dbt version within the respective range `>=1.0.0, <2.0.0`.
 ## Step 2: Installing the Package
@@ -44,7 +44,7 @@ packages:
 ```
 ## Step 3: Configure Your Variables
 ### Database and Schema Variables
-By default, this package will run using your target database and the `jira` schema. If this is not where your JIra data is (perhaps your Jira schema is `jira_fivetran`), add the following configuration to your `dbt_project.yml` file:
+By default, this package will run using your target database and the `jira` schema. If this is not where your Jira data is (perhaps your Jira schema is `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 vars:
@@ -52,7 +52,7 @@ vars:
     jira_schema: your_schema_name 
 ```
 ### Disabling Model Variables
-Your Jira connector might not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your `dbt_project.yml` file:
+Your Jira connector might not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your root `dbt_project.yml` file:
 
 ```yml
 vars:
@@ -62,7 +62,7 @@ vars:
 ```
 ## (Optional) Step 4: Additional Configurations
 ### Change the Build Schema
-By default, this package builds the GitHub staging models within a schema titled (<target_schema> + `_stg_jira`) in your target database. If this is not where you would like your GitHub staging data to be written to, add the following configuration to your `dbt_project.yml` file:
+By default, this package builds the GitHub staging models within a schema titled (<target_schema> + `_stg_jira`) in your target database. If this is not where you would like your GitHub staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
@@ -76,7 +76,7 @@ Your dbt project is now setup to successfully run the dbt package models! You ca
 ## (Optional) Step 6: Orchestrate your package models with Fivetran
 Fivetran offers the ability for you to orchestrate your dbt project through the [Fivetran Transformations for dbt Core](https://fivetran.com/docs/transformations/dbt) product. Refer to the linked docs for more information on how to setup your project for orchestration through Fivetran. 
 
-# 🔍 Package Dependency Matrix
+# 🔍 Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. For more information on the below packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > **If you have any of these dependent packages in your own `packages.yml` I highly recommend you remove them to ensure there are no package version conflicts.**
 ```yml
@@ -88,16 +88,16 @@ packages:
     - package: dbt-labs/spark_utils
       version: [">=0.3.0", "<0.4.0"]
 ```
-# 🙌 Contributions and Maintenance
+# 🙌 How is this package maintained and can I contribute?
 ## Package Maintenance
-The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](/CHANGELOG.md) and release notes for more information on changes across versions.
+The Fivetran team maintaining this package **only** maintains the latest version of the package. We highly recommend you stay consistent with the [latest version](https://hub.getdbt.com/fivetran/github_source/latest/) of the package and refer to the [CHANGELOG](https://github.com/fivetran/dbt_jira_source/blob/main/CHANGELOG.md) and release notes for more information on changes across versions.
 
 ## Contributions
 These dbt packages are developed by a small team of analytics engineers at Fivetran. However, the packages are made better by community contributions! 
 
-We highly encourage and welcome contributions to this package. Please refer to the [CONTRIBUTING.md](/CONTRIBUTING.md) doc for details on how to effectively contribute to this open source project!
+We highly encourage and welcome contributions to this package. Please refer to the [CONTRIBUTING.md](https://github.com/fivetran/dbt_jira_source/blob/main/CONTRIBUTING.md) doc for details on how to effectively contribute to this open source project!
 
-# 🏪 Resources and Feedback
+# 🏪 Are there any resources available?
 - If you encounter any questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_github_source/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran, or would like to request a future dbt package to be developed, then feel free to fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
 - Have questions or want to just say hi? Book a time during our office hours [here](https://calendly.com/fivetran-solutions-team/fivetran-solutions-team-office-hours) or send us an email at solutions@fivetran.com.
