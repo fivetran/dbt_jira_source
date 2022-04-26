@@ -38,6 +38,34 @@ jobs:
             dbt run --target postgres
             dbt test --target postgres
       - run:
+          name: "Run Tests - Spark"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target spark --full-refresh
+            dbt run --vars '{jira_using_sprints: false, jira_using_components: false, jira_using_versions: false}' --target spark --full-refresh
+            dbt run --target spark --full-refresh
+            dbt run --target spark
+            dbt test --target spark
+      - run:
+          name: "Run Tests - Redshift"
+          command: |
+            . venv/bin/activate
+            echo `pwd`
+            cd integration_tests
+            dbt deps
+            dbt seed --target redshift --full-refresh
+            dbt run --vars '{jira_using_sprints: false, jira_using_components: false, jira_using_versions: false}' --target redshift --full-refresh
+            dbt run --target redshift --full-refresh
+            dbt run --target redshift
+            dbt test --target redshift
+      - save_cache:
+          key: deps2-{{ .Branch }}
+          paths:
+            - "venv"
+      - run:
           name: "Run Tests - Snowflake"
           command: |
             . venv/bin/activate
@@ -64,19 +92,3 @@ jobs:
             dbt run --target bigquery --full-refresh
             dbt run --target bigquery
             dbt test --target bigquery
-      - run:
-          name: "Run Tests - Redshift"
-          command: |
-            . venv/bin/activate
-            echo `pwd`
-            cd integration_tests
-            dbt deps
-            dbt seed --target redshift --full-refresh
-            dbt run --vars '{jira_using_sprints: false, jira_using_components: false, jira_using_versions: false}' --target redshift --full-refresh
-            dbt run --target redshift --full-refresh
-            dbt run --target redshift
-            dbt test --target redshift
-      - save_cache:
-          key: deps2-{{ .Branch }}
-          paths:
-            - "venv"

@@ -1,1 +1,2 @@
-select * from {{ var('priority') }}
+select * 
+from {{ var('priority') }}

@@ -2,7 +2,6 @@ with base as (
 
     select * from 
     {{ ref('stg_jira__issue_type_tmp') }}
-    
 ),
 
 fields as (
@@ -14,7 +13,6 @@ fields as (
                 staging_columns=get_issue_type_columns()
             )
         }}
-
     from base
 ),
 
@@ -26,8 +24,8 @@ final as (
         name as issue_type_name,
         subtask as is_subtask,
         _fivetran_synced
-
     from fields
 )
 
-select * from final
+select * 
+from final

@@ -2,21 +2,18 @@ with base as (
     
     select * 
     from {{ ref('stg_jira__issue_tmp') }}
-    
     where not coalesce(_fivetran_deleted, false)
 ),
 
 fields as (
 
     select 
-
         {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_jira__issue_tmp')),
                 staging_columns=get_issue_columns()
             )
         }}
-
     from base
 ),
 
@@ -28,11 +25,11 @@ final as (
         coalesce(time_spent, _time_spent) as time_spent_seconds,
         assignee as assignee_user_id,
         {% if target.type == 'redshift' -%}
-            cast(created as timestamp without time zone) as created_at,
-            cast(resolved as timestamp without time zone) as resolved_at,
+        cast(created as timestamp without time zone) as created_at,
+        cast(resolved as timestamp without time zone) as resolved_at,
         {% else -%}
-            created as created_at,
-            resolved as resolved_at,
+        created as created_at,
+        resolved as resolved_at,
         {% endif %}
         creator as creator_user_id,
         description as issue_description,
@@ -52,8 +49,8 @@ final as (
         updated as updated_at,
         work_ratio,
         _fivetran_synced
-        
     from fields
 )
 
-select * from final
+select * 
+from final

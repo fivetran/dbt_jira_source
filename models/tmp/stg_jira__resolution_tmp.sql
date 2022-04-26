@@ -1,1 +1,2 @@
-select * from {{ var('resolution') }}
+select * 
+from {{ var('resolution') }}

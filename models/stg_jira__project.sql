@@ -7,14 +7,12 @@ with base as (
 fields as (
 
     select
-
         {{
             fivetran_utils.fill_staging_columns(
                 source_columns=adapter.get_columns_in_relation(ref('stg_jira__project_tmp')),
                 staging_columns=get_project_columns()
             )
         }}
-
     from base
 
 ),
@@ -30,8 +28,8 @@ final as (
         project_category_id,
         permission_scheme_id,
         _fivetran_synced
-        
     from fields
 )
 
-select * from final
+select * 
+from final

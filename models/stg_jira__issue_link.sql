@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__issue_link_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_issue_link_columns()
             )
         }}
-        
     from base
 ),
 
@@ -26,8 +24,8 @@ final as (
         related_issue_id,
         relationship,
         _fivetran_synced 
-        
     from fields
 )
 
-select * from final
+select * 
+from final

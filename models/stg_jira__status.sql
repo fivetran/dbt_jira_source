@@ -13,7 +13,6 @@ fields as (
                 staging_columns=get_status_columns()
             )
         }}
-
     from base
 ),
 
@@ -25,8 +24,8 @@ final as (
         name as status_name,
         status_category_id,
         _fivetran_synced
-
     from fields
 )
 
-select * from final
+select * 
+from final

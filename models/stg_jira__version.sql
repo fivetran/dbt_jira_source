@@ -4,7 +4,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__version_tmp') }}
-
 ),
 
 fields as (
@@ -16,7 +15,6 @@ fields as (
                 staging_columns=get_version_columns()
             )
         }}
-        
     from base
 ),
 
@@ -32,8 +30,8 @@ final as (
         release_date,
         released as is_released,
         start_date
-        
     from fields
 )
 
-select * from final
+select * 
+from final

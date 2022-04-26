@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__comment_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_comment_columns()
             )
         }}
-        
     from base
 ),
 
@@ -31,8 +29,8 @@ final as (
         update_author_id as last_update_user_id,
         updated as last_updated_at,
         _fivetran_synced
-
     from fields
 )
 
-select * from final
+select * 
+from final

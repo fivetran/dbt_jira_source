@@ -1,1 +1,2 @@
-select * from {{ var('project') }}
+select * 
+from {{ var('project') }}

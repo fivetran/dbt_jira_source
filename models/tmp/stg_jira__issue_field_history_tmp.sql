@@ -1,1 +1,2 @@
-select * from {{ var('issue_field_history') }}
+select * 
+from {{ var('issue_field_history') }}

@@ -1,1 +1,2 @@
-select * from {{ var('field_option') }}
+select * 
+from {{ var('field_option') }}
