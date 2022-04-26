@@ -19,7 +19,7 @@ Refer to the DAG below for a detailed view of all models materialized by default
 
 <p align="center">
         <a alt="dag" href="https://fivetran.github.io/dbt_jira_source/#!/overview?g_v=1">
-        <img src="docs/src/jira_source_dag.png"/></a>
+        <img align="center" style="max-width:600px;" src="docs/src/jira_source_models.png"/></a>
 </p>
 
 # 🤔 Who is the target user of this dbt package?
