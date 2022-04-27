@@ -13,11 +13,12 @@
         <img src="https://img.shields.io/badge/Contributions-welcome-blueviolet" /></a>
 </p>
 
-# Jira Source dbt Package
+# Jira Source dbt Package ([Docs](https://fivetran.github.io/dbt_jira_source/))
 # 📣 What does this dbt package do?
-This package cleans, tests, and prepares Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira) for analysis. It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation) and is intended to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira).
-
-Refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) for more details about these models. 
+- Cleans, tests, and prepares your Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/Jira) for analysis.
+- Generates a comprehensive data dictionary of your Jira data via the [dbt docs site](https://fivetran.github.io/dbt_jira_source/)
+- Materializes staging tables which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation) and is intended to work simultaneously with our [Jira modeling package](https://github.com/fivetran/dbt_jira)
+    - Refer to our [Docs site](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) for more details about these materialized models. 
 
 # 🤔 Who is the target user of this dbt package?
 - You use Fivetran's [Jira connector](https://fivetran.com/docs/applications/Jira)
