@@ -24,16 +24,11 @@ final as (
         coalesce(remaining_estimate, _remaining_estimate) as remaining_estimate_seconds,
         coalesce(time_spent, _time_spent) as time_spent_seconds,
         assignee as assignee_user_id,
-        {% if target.type == 'redshift' -%}
-        cast(created as timestamp without time zone) as created_at,
-        cast(resolved as timestamp without time zone) as resolved_at,
-        {% else -%}
-        created as created_at,
-        resolved as resolved_at,
-        {% endif %}
+        cast(created as {{ dbt_utils.type_timestamp() }}) as created_at,
+        cast(resolved  as {{ dbt_utils.type_timestamp() }}) as resolved_at,
         creator as creator_user_id,
         description as issue_description,
-        due_date,
+        cast(due_date as {{ dbt_utils.type_timestamp() }}) as due_date,
         environment,
         id as issue_id,
         issue_type as issue_type_id,
@@ -44,9 +39,9 @@ final as (
         reporter as reporter_user_id,
         resolution as resolution_id,
         status as status_id,
-        status_category_changed as status_changed_at,
+        cast(status_category_changed as {{ dbt_utils.type_timestamp() }}) as status_changed_at,
         summary as issue_name,
-        updated as updated_at,
+        cast(updated as {{ dbt_utils.type_timestamp() }}) as updated_at,
         work_ratio,
         _fivetran_synced
     from fields

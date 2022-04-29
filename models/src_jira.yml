@@ -16,6 +16,7 @@ sources:
 
     tables:
       - name: comment
+        identifier: "{{ var('jira__comment_identifier', 'comment')}}"
         description: Table of comments made on issues.
         columns:
           - name: id 
@@ -36,6 +37,7 @@ sources:
             description: Timestamp of when the comment was last updated.
 
       - name: component
+        identifier: "{{ var('jira__component_identifier', 'component')}}"
         description: >
           Table of project components (subsections to group issues).
         columns:
@@ -48,7 +50,8 @@ sources:
           - name: project_id
             description: Foreign key referencing the id of the component's `project`.
         
-      - name: field 
+      - name: field
+        identifier: "{{ var('jira__field_identifier', 'field')}}"
         description: Table of all issue fields.
         columns:
           - name: id
@@ -65,6 +68,7 @@ sources:
             description: Name of the field as it appears on issue cards.
 
       - name: field_option
+        identifier: "{{ var('jira__field_option_identifier', 'field_option')}}"
         description: Table of all options related to custom fields.
         columns:
           - name: id
@@ -73,6 +77,7 @@ sources:
             description: Name of the field option.
 
       - name: issue
+        identifier: "{{ var('jira__issue_identifier', 'issue')}}"
         description: Table of all issues in your organization's Jira (captures soft deletes).
         columns:
           - name: id
@@ -135,6 +140,7 @@ sources:
               Equals -1.0 when the fields required for calculation are not provided.
 
       - name: issue_field_history
+        identifier: "{{ var('jira__issue_field_history_identifier', 'issue_field_history')}}"
         description: Table of every value that each **custom non-array** (not multiselect) field has been set to.
         columns:
           - name: field_id
@@ -147,6 +153,7 @@ sources:
             description: Content of the value of that the field was set to.
 
       - name: issue_link 
+        identifier: "{{ var('jira__issue_link_identifier', 'issue_link')}}"
         description: >
           Table of relationships (links) created between issues. Issue links can include blockers, clones/duplicates, and general relationships.
         columns:
@@ -158,6 +165,7 @@ sources:
             description: The nature of the link between the two issues ("blocks", "is duplicated by", "relates to", etc.)
 
       - name: issue_multiselect_history
+        identifier: "{{ var('jira__issue_multiselect_history_identifier', 'issue_multiselect_history')}}"
         description: >
           Table of every value that each array-type (multiselect) field has been set to. Each row will pertain to **one** value.
         columns:
@@ -173,6 +181,7 @@ sources:
             description: Content of the value of that the field was set to. 
         
       - name: issue_type
+        identifier: "{{ var('jira__issue_type_identifier', 'issue_type')}}"
         description: >
           Table containing information about issue types. Issue types can have identical names in different projects, but they may have 
           differing descriptions.
@@ -187,6 +196,7 @@ sources:
             description: Boolean that is true if this type of issue is a subtask.
 
       - name: priority
+        identifier: "{{ var('jira__priority_identifier', 'priority')}}"
         description: Table of issue priority levels (global).
         columns:
           - name: id
@@ -197,6 +207,7 @@ sources:
             description: Name of the priority as it appears in the UI.
 
       - name: project
+        identifier: "{{ var('jira__project_identifier', 'project')}}"
         description: Table of all projects in your organization.
         columns:
           - name: id
@@ -217,6 +228,7 @@ sources:
             description: ID of the type of project (ie 'software').
 
       - name: resolution
+        identifier: "{{ var('jira__resolution_identifier', 'resolution')}}"
         description: Table storing the types of resolutions used by your organization.
         columns: 
           - name: id
@@ -227,6 +239,7 @@ sources:
             description: Display name of the resolution.
 
       - name: sprint
+        identifier: "{{ var('jira__sprint_identifier', 'sprint')}}"
         description: Table of all sprints.
         columns:
           - name: id
@@ -243,6 +256,7 @@ sources:
             description: Timestamp of when the sprint began. 
 
       - name: status
+        identifier: "{{ var('jira__status_identifier', 'status')}}"
         description: Table of project-level statuses (which may have the same umbrella `status_category`).
         columns:
           - name: id
@@ -257,6 +271,7 @@ sources:
             description: Foreign key referencing the ID of the `status_category` that this project status falls under.
 
       - name: status_category
+        identifier: "{{ var('jira__status_category_identifier', 'status_category')}}"
         description: Table of overarching status categories.
         columns:
           - name: id
@@ -265,6 +280,7 @@ sources:
             description: Title of the status category.
 
       - name: user
+        identifier: "{{ var('jira__user_identifier', 'user')}}"
         description: Table of users associated with your organization.
         columns:
           - name: id  
@@ -281,6 +297,7 @@ sources:
             description: Account username.
       
       - name: version
+        identifier: "{{ var('jira__version_identifier', 'version')}}"
         description: Table of project versions in your organization.
         columns:
           - name: archived

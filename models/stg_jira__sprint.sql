@@ -24,9 +24,9 @@ final as (
         id as sprint_id,
         name as sprint_name,
         board_id,
-        complete_date as completed_at,
-        end_date as ended_at,
-        start_date as started_at,
+        cast(complete_date as {{ dbt_utils.type_timestamp() }}) as completed_at,
+        cast(end_date as {{ dbt_utils.type_timestamp() }}) as ended_at,
+        cast(start_date as {{ dbt_utils.type_timestamp() }}) as started_at,
         _fivetran_synced
     from fields
 )

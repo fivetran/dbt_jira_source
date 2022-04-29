@@ -42,12 +42,13 @@ packages:
 ```
 ## Step 3: Configure Your Variables
 ### Database and Schema Variables
-By default, this package will run using your target database and the `jira` schema. If this is not where your Jira data is (perhaps your Jira schema is `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:
+By default, this package will run using your target database and the `jira` schema. If this is not where your Jira data is (perhaps your Jira schema is `jira_fivetran` and your `issue` table is named `usa_issue`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 vars:
     jira_database: your_database_name
     jira_schema: your_schema_name 
+    jira__<default_source_table_name>_identifier: your_table_name
 ```
 ### Disabling Components
 Your Jira connector might not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your root `dbt_project.yml` file:
