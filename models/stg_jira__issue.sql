@@ -28,7 +28,7 @@ final as (
         cast(resolved  as {{ dbt_utils.type_timestamp() }}) as resolved_at,
         creator as creator_user_id,
         description as issue_description,
-        cast(due_date as {{ dbt_utils.type_timestamp() }}) as due_date,
+        due_date,
         environment,
         id as issue_id,
         issue_type as issue_type_id,
