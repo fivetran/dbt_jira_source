@@ -52,7 +52,7 @@ vars:
 ```
 
 ## (Optional) Step 4: Additional Configurations
-<details><summary>Expand for instructions</summary>
+<details><summary>Expand for configurations</summary>
     
 ### Change the Build Schema
 By default, this package builds the Jira staging models within a schema titled (<target_schema> + `_stg_jira`) in your target database. If this is not where you would like your Jira staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
