@@ -32,7 +32,7 @@ packages:
   - package: fivetran/jira_source
     version: [">=0.5.0", "<0.6.0"]
 ```
-## Step 3: Configure Database and Schema Variables
+## Step 3: Define Database and Schema Variables
 By default, this package will run using your target database and the `jira` schema. If this is not where your Jira data is (perhaps your Jira schema is `jira_fivetran` and your `issue` table is named `usa_issue`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
