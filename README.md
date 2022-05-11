@@ -32,8 +32,7 @@ packages:
   - package: fivetran/jira_source
     version: [">=0.5.0", "<0.6.0"]
 ```
-## Step 3: Configure Your Variables
-### Database and Schema Variables
+## Step 3: Configure Database and Schema Variables
 By default, this package will run using your target database and the `jira` schema. If this is not where your Jira data is (perhaps your Jira schema is `jira_fivetran` and your `issue` table is named `usa_issue`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
@@ -41,7 +40,7 @@ vars:
     jira_database: your_database_name
     jira_schema: your_schema_name 
 ```
-### Disabling Components
+## Step 4: Disable Models for Non Existent Sources
 Your Jira connector might not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your root `dbt_project.yml` file:
 
 ```yml
@@ -51,7 +50,7 @@ vars:
     jira_using_versions: false # Disable if you do not have the versions table, or if you do not want versions related metrics reported
 ```
 
-## (Optional) Step 4: Additional Configurations
+## (Optional) Step 5: Additional Configurations
 <details><summary>Expand for configurations</summary>
     
 ### Change the Build Schema
@@ -71,7 +70,7 @@ vars:
 ```
 </details>
 
-## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
+## (Optional) Step 6: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for details</summary>
 <br>
     
