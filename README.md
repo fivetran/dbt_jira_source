@@ -65,7 +65,7 @@ models:
     
 ### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
-> IMPORTANT: See this project's [dbt_project.yml](https://github.com/fivetran/dbt_jira_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
+> IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_jira_source/blob/main/dbt_project.yml) variable declarations to see the expected names.
     
 ```yml
 vars:
