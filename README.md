@@ -38,7 +38,7 @@ By default, this package runs using your destination and the `jira` schema. If t
 
 ```yml
 vars:
-    jira_database: your_database_name
+    jira_database: your_destination_name
     jira_schema: your_schema_name 
 ```
 ## Step 4: Disable models for non-existent sources
@@ -46,9 +46,9 @@ Your Jira connector may not sync every table that this package expects. If you d
 
 ```yml
 vars:
-    jira_using_sprints: false   # Disable if you do not have the sprint table, or if you do not want sprint related metrics reported
-    jira_using_components: false # Disable if you do not have the component table, or if you do not want component related metrics reported
-    jira_using_versions: false # Disable if you do not have the versions table, or if you do not want versions related metrics reported
+    jira_using_sprints: false   # Disable if you do not have the sprint table or do not want sprint-related metrics reported
+    jira_using_components: false # Disable if you do not have the component table or do not want component-related metrics reported
+    jira_using_versions: false # Disable if you do not have the versions table or do not want versions-related metrics reported
 ```
 
 ## (Optional) Step 5: Additional configurations
