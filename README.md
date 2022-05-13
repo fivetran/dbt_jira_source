@@ -15,7 +15,7 @@
 
 # Jira Source dbt Package ([Docs](https://fivetran.github.io/dbt_jira_source/))
 # 📣 What does this dbt package do?
-- Materializes [Jira staging tables](https://fivetran.github.io/dbt_jira_source/#!/overview/github_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation). These staging tables clean, test, and prepare your Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira) for analysis by doing the following:
+- Materializes [Jira staging tables](https://fivetran.github.io/dbt_jira_source/#!/overview/stripe_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation). These staging tables clean, test, and prepare your Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
   - Adds freshness tests to source data
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
