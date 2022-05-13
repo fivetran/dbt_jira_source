@@ -37,7 +37,7 @@ packages:
     version: [">=0.5.0", "<0.6.0"]
 ```
 ## Step 3: Define database and schema variables
-By default, this package runs using your destination and the `jira` schema. If this is not where your Jira data is (for example, if your Jira schema is named `jira_fivetran` and your `issue` table is named `usa_issue`), add the following configuration to your root `dbt_project.yml` file:
+By default, this package runs using your destination and the `jira` schema. If this is not where your Jira data is (for example, if your Jira schema is named `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 vars:
