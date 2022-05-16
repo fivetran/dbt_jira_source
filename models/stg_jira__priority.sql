@@ -1,3 +1,5 @@
+{{ config(enabled=var('jira_using_priorities', True)) }}
+
 with base as (
 
     select * 
