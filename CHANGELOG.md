@@ -1,6 +1,6 @@
 # dbt_jira_source v0.4.1
 ## Features
-- Makes Priority data optional. If `jira_using_priorities: false` in `dbt_project.yml`, then `stg_jira__priority_tmp` and `stg_jira__priority` won't build.
+- Makes Priority data optional. If `jira_using_priorities: false` in `dbt_project.yml`, then `stg_jira__priority_tmp` and `stg_jira__priority` won't build. ([#30](https://github.com/fivetran/dbt_jira_source/pull/30))
 
 ## Contributors
 - @everettttt ([#30](https://github.com/fivetran/dbt_jira_source/pull/30))
