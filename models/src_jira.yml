@@ -38,6 +38,8 @@ sources:
       - name: component
         description: >
           Table of project components (subsections to group issues).
+        meta:
+          is_enabled: "{{ var('jira_using_components', true) }}"
         columns:
           - name: id
             description: ID of the component.
@@ -188,6 +190,8 @@ sources:
 
       - name: priority
         description: Table of issue priority levels (global).
+        meta:
+          is_enabled: "{{ var('jira_using_priorities', true) }}"
         columns:
           - name: id
             description: Unique ID of the priority level.
@@ -228,6 +232,8 @@ sources:
 
       - name: sprint
         description: Table of all sprints.
+        meta:
+          is_enabled: "{{ var('jira_using_sprints', true) }}"
         columns:
           - name: id
             description: Unique ID of the sprint.
@@ -270,7 +276,7 @@ sources:
           - name: id  
             description: Unique ID of the user. 
           - name: email
-            description: Email associated with the user acccount.
+            description: Email associated with the user account.
           - name: locale
             description: The Java locale of the user. 
           - name: name
@@ -282,6 +288,8 @@ sources:
       
       - name: version
         description: Table of project versions in your organization.
+        meta:
+          is_enabled: "{{ var('jira_using_versions', true) }}"
         columns:
           - name: archived
             description: Boolean that is true if the project version has been archived.

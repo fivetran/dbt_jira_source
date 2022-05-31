@@ -1,5 +1,5 @@
 name: 'jira_source'
-version: '0.4.0'
+version: '0.4.1'
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 
@@ -23,9 +23,6 @@ vars:
     field_option: "{{ source('jira', 'field_option') }}"
     sprint: "{{ source('jira', 'sprint') }}"
     version: "{{ source('jira', 'version') }}"
-    jira_using_sprints: true # disable if you are not using sprints in Jira
-    jira_using_components: true # disable if you are not using components in Jira
-    jira_using_versions: true # disable if you are not using versions in Jira
 
 
 models:
