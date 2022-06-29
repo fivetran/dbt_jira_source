@@ -23,6 +23,7 @@ final as (
     
     select 
         id as field_id,
+        parent_id as parent_field_id,
         name as field_option_name
 
     from fields
