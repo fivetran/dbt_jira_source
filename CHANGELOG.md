@@ -1,3 +1,9 @@
+# dbt_jira_source v0.4.2
+## Changes
+Add parent_id field in the field_option table. The field is used when defining custom fields as parent and child custom fields can be created to define some main categories and subcategories. 
+
+Changes done according to the issue:https://github.com/fivetran/dbt_jira_source/issues/31
+
 # dbt_jira_source v0.4.1
 ## Features
 - Makes Priority data optional. If `jira_using_priorities: false` in `dbt_project.yml`, then `stg_jira__priority_tmp` and `stg_jira__priority` won't build. ([#30](https://github.com/fivetran/dbt_jira_source/pull/30))
