@@ -1,8 +1,9 @@
 # dbt_jira_source v0.4.2
-## Changes
-Add parent_id field in the field_option table. The field is used when defining custom fields as parent and child custom fields can be created to define some main categories and subcategories. 
+## Features
+- Added the `parent_id` field in the `stg_jira__field_option` model. This field is used when defining custom fields as parent and child custom fields can be created to define a variety of main categories and subcategories. ([#32](https://github.com/fivetran/dbt_jira_source/pull/32))
 
-Changes done according to the issue:https://github.com/fivetran/dbt_jira_source/issues/31
+## Contributors
+- [@sergiisolaa](https://github.com/sergiisolaa) ([#32](https://github.com/fivetran/dbt_jira_source/pull/32))
 
 # dbt_jira_source v0.4.1
 ## Features
