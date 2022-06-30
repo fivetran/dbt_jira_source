@@ -65,6 +65,8 @@ models:
         description: The ID of the custom field.
         tests:
           - not_null
+      - name: parent_field_id
+        description: The ID of the parent custom field.
       - name: field_option_name
         description: Name of the field option.
 
