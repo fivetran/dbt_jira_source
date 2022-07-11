@@ -19,7 +19,7 @@ This package contains staging models, designed to work simultaneously with our [
     - ID primary keys are prefixed with the name of the table.  For example, the `issue` table's ID column is renamed `issue_id`.
     - Foreign keys include the table that they refer to. For example, an issue's `assignee` user ID column is renamed `assignee_user_id`.
 
-## Installation Instructions
+## Installation Instructions 
 Add the following to your `packages.yml` file:
 ```yml
 # packages.yml
