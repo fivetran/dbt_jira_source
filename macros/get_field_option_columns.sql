@@ -2,6 +2,7 @@
 
 {% set columns = [
     {"name": "id", "datatype": dbt_utils.type_int()},
+    {"name": "parent_id", "datatype": dbt_utils.type_int()},
     {"name": "_fivetran_synced", "datatype": dbt_utils.type_timestamp()},
     {"name": "name", "datatype": dbt_utils.type_string()}
 ] %}

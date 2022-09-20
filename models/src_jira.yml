@@ -75,6 +75,8 @@ sources:
         columns:
           - name: id
             description: The ID of the custom field.
+          - name: parent_id
+            description: The ID of the parent custom field.
           - name: name
             description: Name of the field option.
 
