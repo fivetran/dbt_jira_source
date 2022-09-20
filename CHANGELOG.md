@@ -4,7 +4,7 @@
 ## 🎉 Documentation and Feature Updates
 - Updated README documentation updates for easier navigation and setup of the dbt package
 - Added `jira_[source_table_name]_identifier` variables to allow for easier flexibility of the package to refer to source tables with different names.
-- Source config has been added to the `sprint`, `component`, and `version` sources. This ensures the source freshness will not be run if they are disabled within the package.
+- Source config has been added to the `sprint`, `component`, `priority`, and `version` sources. This ensures the source freshness will not be run if they are disabled within the package.
 # dbt_jira_source v0.4.2
 ## Features
 - Added the `parent_id` field in the `stg_jira__field_option` model. This field is used when defining custom fields as parent and child custom fields can be created to define a variety of main categories and subcategories. ([#32](https://github.com/fivetran/dbt_jira_source/pull/32))
