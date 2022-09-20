@@ -1,6 +1,6 @@
 # dbt_jira_source v0.5.0
 ## 🚨 Breaking Changes 🚨
-- The default schema for the source tables are now built within a schema titled (`<target_schema>` + `_source_jira`) in your destination. The previous default schema was (`<target_schema>` + `_source_jira`). This may be overwritten if desired.
+- The default schema for the source tables are now built within a schema titled (`<target_schema>` + `_jira_source`) in your destination. The previous default schema was (`<target_schema>` + `_stg_jira`). This may be overwritten if desired.
 ## 🎉 Documentation and Feature Updates
 - Updated README documentation updates for easier navigation and setup of the dbt package
 - Added `jira_[source_table_name]_identifier` variables to allow for easier flexibility of the package to refer to source tables with different names.
