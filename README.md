@@ -2,9 +2,6 @@
     <a alt="License"
         href="https://github.com/fivetran/dbt_jira_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
-    <a alt="Fivetran-Release"
-        href="https://fivetran.com/docs/getting-started/core-concepts#releasephases">
-        <img src="https://img.shields.io/badge/Fivetran Release Phase-_Beta-orange.svg" /></a>
     <a alt="dbt-core">
         <img src="https://img.shields.io/badge/dbt_Core™_version->=1.0.0_<2.0.0-orange.svg" /></a>
     <a alt="Maintained?">
@@ -58,7 +55,7 @@ vars:
 <details><summary>Expand to view configurations</summary>
     
 ### Change the build schema
-By default, this package builds the Jira staging models within a schema titled (`<target_schema>` + `_stg_jira`) in your destination. If this is not where you would like your Jira staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the Jira staging models within a schema titled (`<target_schema>` + `_source_jira`) in your destination. If this is not where you would like your Jira staging data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:

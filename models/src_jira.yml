@@ -40,6 +40,8 @@ sources:
         identifier: "{{ var('jira_component_identifier', 'component')}}"
         description: >
           Table of project components (subsections to group issues).
+        config:
+          enabled: "{{ var('jira_using_components', true) }}"
         columns:
           - name: id
             description: ID of the component.
@@ -240,6 +242,8 @@ sources:
 
       - name: sprint
         identifier: "{{ var('jira_sprint_identifier', 'sprint')}}"
+        config:
+          enabled: "{{ var('jira_using_sprints', true) }}"
         description: Table of all sprints.
         columns:
           - name: id
@@ -299,6 +303,8 @@ sources:
       - name: version
         identifier: "{{ var('jira_version_identifier', 'version')}}"
         description: Table of project versions in your organization.
+        config:
+          enabled: "{{ var('jira_using_versions', true) }}"
         columns:
           - name: archived
             description: Boolean that is true if the project version has been archived.
