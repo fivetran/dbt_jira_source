@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__field_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_field_columns()
             )
         }}
-        
     from base
 ),
 
@@ -26,9 +24,9 @@ final as (
         is_array,
         is_custom,
         name as field_name,
-        _fivetran_synced 
-        
+        _fivetran_synced
     from fields
 )
 
-select * from final
+select * 
+from final

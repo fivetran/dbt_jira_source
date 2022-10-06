@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__status_category_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_status_category_columns()
             )
         }}
-        
     from base
 ),
 
@@ -24,8 +22,8 @@ final as (
     select 
         id as status_category_id,
         name as status_category_name
-        
     from fields
 )
 
-select * from final
+select * 
+from final

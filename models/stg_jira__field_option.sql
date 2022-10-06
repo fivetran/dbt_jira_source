@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__field_option_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_field_option_columns()
             )
         }}
-        
     from base
 ),
 
@@ -25,8 +23,8 @@ final as (
         id as field_id,
         parent_id as parent_field_id,
         name as field_option_name
-
     from fields
 )
 
-select * from final
+select * 
+from final

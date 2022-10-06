@@ -4,7 +4,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__priority_tmp') }}
-
 ),
 
 fields as (
@@ -16,7 +15,6 @@ fields as (
                 staging_columns=get_priority_columns()
             )
         }}
-        
     from base
 ),
 
@@ -27,8 +25,8 @@ final as (
         id as priority_id,
         name as priority_name,
         _fivetran_synced
-        
     from fields
 )
 
-select * from final
+select * 
+from final

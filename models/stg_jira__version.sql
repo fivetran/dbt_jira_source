@@ -4,7 +4,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__version_tmp') }}
-
 ),
 
 fields as (
@@ -16,7 +15,6 @@ fields as (
                 staging_columns=get_version_columns()
             )
         }}
-        
     from base
 ),
 
@@ -29,11 +27,11 @@ final as (
         name as version_name,
         overdue as is_overdue,
         project_id,
-        release_date,
+        cast(release_date as {{ dbt_utils.type_timestamp() }}) as release_date,
         released as is_released,
-        start_date
-        
+        cast(start_date as {{ dbt_utils.type_timestamp() }}) as start_date
     from fields
 )
 
-select * from final
+select * 
+from final

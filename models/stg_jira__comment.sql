@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__comment_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_comment_columns()
             )
         }}
-        
     from base
 ),
 
@@ -24,15 +22,15 @@ final as (
     select 
         author_id as author_user_id,
         body,
-        created as created_at,
+        cast(created as {{ dbt_utils.type_timestamp() }}) as created_at,
         id as comment_id,
         issue_id,
         is_public,
         update_author_id as last_update_user_id,
-        updated as last_updated_at,
+        cast(updated as {{ dbt_utils.type_timestamp() }}) as last_updated_at,
         _fivetran_synced
-
     from fields
 )
 
-select * from final
+select * 
+from final

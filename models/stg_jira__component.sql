@@ -4,7 +4,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__component_tmp') }}
-
 ),
 
 fields as (
@@ -16,7 +15,6 @@ fields as (
                 staging_columns=get_component_columns()
             )
         }}
-        
     from base
 ),
 
@@ -28,8 +26,8 @@ final as (
         name as component_name,
         project_id,
         _fivetran_synced
-        
     from fields
 )
 
-select * from final
+select * 
+from final

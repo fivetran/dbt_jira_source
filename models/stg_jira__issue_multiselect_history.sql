@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__issue_multiselect_history_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_issue_multiselect_history_columns()
             )
         }}
-        
     from base
 ),
 
@@ -26,16 +24,16 @@ final as (
         cast(field_id as {{ dbt_utils.type_string() }}) as field_id,
         issue_id,
         {% if target.type == 'snowflake' %}
-        "TIME"
+        cast("TIME" as {{ dbt_utils.type_timestamp() }})
         {% elif target.type == 'redshift' %}
-        "time"
+        cast("time" as {{ dbt_utils.type_timestamp() }})
         {% else %}
-        time
+        cast(time as {{ dbt_utils.type_timestamp() }})
         {% endif %} as updated_at,
         value as field_value,
         _fivetran_synced
-        
     from fields
 )
 
-select * from final
+select * 
+from final

@@ -1,1 +1,2 @@
-select * from {{ var('comment') }}
+select * 
+from {{ var('comment') }}

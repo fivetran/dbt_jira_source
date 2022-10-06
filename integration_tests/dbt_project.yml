@@ -1,32 +1,32 @@
 name: 'jira_source_integration_tests'
-version: '0.4.2'
+version: '0.5.0'
 config-version: 2
 profile: 'integration_tests'
 
 
 vars:
   jira_source:
-    comment: "{{ ref('comment') }}"
-    component: "{{ ref('component') }}"
-    epic: "{{ ref('epic') }}"
-    field: "{{ ref('field') }}"
-    field_option: "{{ ref('field_option') }}"
-    issue_field_history: "{{ ref('issue_field_history') }}"
-    issue_link: "{{ ref('issue_link') }}"
-    issue_multiselect_history: "{{ ref('issue_multiselect_history') }}"
-    issue_type: "{{ ref('issue_type') }}"
-    issue: "{{ ref('issue') }}"
-    priority: "{{ ref('priority') }}"
-    project_board: "{{ ref('project_board') }}"
-    project_category: "{{ ref('project_category') }}"
-    project: "{{ ref('project') }}"
-    resolution: "{{ ref('resolution') }}"
-    sprint: "{{ ref('sprint') }}"
-    status_category: "{{ ref('status_category') }}"
-    status: "{{ ref('status') }}"
-    user_group: "{{ ref('user_group') }}"
-    user: "{{ ref('user') }}"
-    version: "{{ ref('version') }}"
+    jira_comment_identifier: "comment"
+    jira_component_identifier: "component"
+    jira_epic_identifier: "epic"
+    jira_field_identifier: "field"
+    jira_field_option_identifier: "field_option"
+    jira_issue_field_history_identifier: "issue_field_history"
+    jira_issue_link_identifier: "issue_link"
+    jira_issue_multiselect_history_identifier: "issue_multiselect_history"
+    jira_issue_type_identifier: "issue_type"
+    jira_issue_identifier: "issue"
+    jira_priority_identifier: "priority"
+    jira_project_board_identifier: "project_board"
+    jira_project_category_identifier: "project_category"
+    jira_project_identifier: "project"
+    jira_resolution_identifier: "resolution"
+    jira_sprint_identifier: "sprint"
+    jira_status_category_identifier: "status_category"
+    jira_status_identifier: "status"
+    jira_user_group_identifier: "user_group"
+    jira_user_identifier: "user"
+    jira_version_identifier: "version"
 
     jira_schema: jira_source_integration_tests
 
@@ -34,9 +34,6 @@ seeds:
   jira_source_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
-    board:
-      +column_types:
-        id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"
     comment:
       +column_types:
         id: "{{ 'int64' if target.name == 'bigquery' else 'bigint' }}"

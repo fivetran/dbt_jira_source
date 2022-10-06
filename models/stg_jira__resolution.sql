@@ -3,7 +3,6 @@ with base as (
 
     select * 
     from {{ ref('stg_jira__resolution_tmp') }}
-
 ),
 
 fields as (
@@ -15,7 +14,6 @@ fields as (
                 staging_columns=get_resolution_columns()
             )
         }}
-        
     from base
 ),
 
@@ -26,8 +24,8 @@ final as (
         id as resolution_id,
         name as resolution_name,
         _fivetran_synced
-        
     from fields
 )
 
-select * from final
+select * 
+from final

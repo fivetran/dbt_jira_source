@@ -1,1 +1,2 @@
-select * from {{ var('status') }}
+select * 
+from {{ var('status') }}
