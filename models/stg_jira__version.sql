@@ -27,9 +27,9 @@ final as (
         name as version_name,
         overdue as is_overdue,
         project_id,
-        cast(release_date as {{ dbt_utils.type_timestamp() }}) as release_date,
+        cast(release_date as {{ dbt.type_timestamp() }}) as release_date,
         released as is_released,
-        cast(start_date as {{ dbt_utils.type_timestamp() }}) as start_date
+        cast(start_date as {{ dbt.type_timestamp() }}) as start_date
     from fields
 )
 

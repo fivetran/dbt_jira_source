@@ -20,7 +20,7 @@ fields as (
 final as (
     
     select 
-        cast(id as {{ dbt_utils.type_string() }}) as field_id,
+        cast(id as {{ dbt.type_string() }}) as field_id,
         is_array,
         is_custom,
         name as field_name,

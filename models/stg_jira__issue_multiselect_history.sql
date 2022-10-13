@@ -21,14 +21,14 @@ final as (
     
     select 
         _fivetran_id,
-        cast(field_id as {{ dbt_utils.type_string() }}) as field_id,
+        cast(field_id as {{ dbt.type_string() }}) as field_id,
         issue_id,
         {% if target.type == 'snowflake' %}
-        cast("TIME" as {{ dbt_utils.type_timestamp() }})
+        cast("TIME" as {{ dbt.type_timestamp() }})
         {% elif target.type == 'redshift' %}
-        cast("time" as {{ dbt_utils.type_timestamp() }})
+        cast("time" as {{ dbt.type_timestamp() }})
         {% else %}
-        cast(time as {{ dbt_utils.type_timestamp() }})
+        cast(time as {{ dbt.type_timestamp() }})
         {% endif %} as updated_at,
         value as field_value,
         _fivetran_synced
