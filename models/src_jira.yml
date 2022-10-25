@@ -4,7 +4,7 @@ version: 2
 
 sources:
   - name: jira 
-    database: "{% if target.type != '!!!!!!! REPLACE 'spark' WITH 'spark','databricks' OR EQUIV !!!!!!!'%}{{ var('jira_database', target.database) }}{% endif %}"
+    database: "{% if target.type != 'spark'%}{{ var('jira_database', target.database) }}{% endif %}"
     schema: "{{ var ('jira_schema', 'jira') }}"
 
     loader: fivetran
