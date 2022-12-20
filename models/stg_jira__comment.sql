@@ -22,12 +22,12 @@ final as (
     select 
         author_id as author_user_id,
         body,
-        cast(created as {{ dbt_utils.type_timestamp() }}) as created_at,
+        cast(created as {{ dbt.type_timestamp() }}) as created_at,
         id as comment_id,
         issue_id,
         is_public,
         update_author_id as last_update_user_id,
-        cast(updated as {{ dbt_utils.type_timestamp() }}) as last_updated_at,
+        cast(updated as {{ dbt.type_timestamp() }}) as last_updated_at,
         _fivetran_synced
     from fields
 )
