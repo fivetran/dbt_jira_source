@@ -1,10 +1,11 @@
 name: 'jira_source_integration_tests'
-version: '0.6.0'
+version: '0.6.1'
 config-version: 2
 profile: 'integration_tests'
 
 
 vars:
+  jira_schema: jira_source_integrations_tests
   jira_source:
     jira_comment_identifier: "comment"
     jira_component_identifier: "component"
@@ -76,3 +77,7 @@ seeds:
     field: 
       +column_types:
         id: "{{ 'string' if target.name in ('bigquery', 'spark', 'databricks') else 'varchar' }}"
+
+dispatch:
+  - macro_namespace: dbt_utils
+    search_order: ['spark_utils', 'dbt_utils']
