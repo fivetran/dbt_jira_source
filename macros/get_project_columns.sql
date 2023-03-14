@@ -8,7 +8,8 @@
     {"name": "lead_id", "datatype": dbt.type_string()},
     {"name": "name", "datatype": dbt.type_string()},
     {"name": "permission_scheme_id", "datatype": dbt.type_int()},
-    {"name": "project_category_id", "datatype": dbt.type_int()}
+    {"name": "project_category_id", "datatype": dbt.type_int()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}

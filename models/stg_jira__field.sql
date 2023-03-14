@@ -26,6 +26,7 @@ final as (
         name as field_name,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

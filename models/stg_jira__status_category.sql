@@ -23,6 +23,7 @@ final as (
         id as status_category_id,
         name as status_category_name
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

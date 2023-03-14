@@ -7,7 +7,8 @@
     {"name": "end_date", "datatype": dbt.type_timestamp()},
     {"name": "id", "datatype": dbt.type_int()},
     {"name": "name", "datatype": dbt.type_string()},
-    {"name": "start_date", "datatype": dbt.type_timestamp()}
+    {"name": "start_date", "datatype": dbt.type_timestamp()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}

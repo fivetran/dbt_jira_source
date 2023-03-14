@@ -31,6 +31,7 @@ final as (
         released as is_released,
         cast(start_date as {{ dbt.type_timestamp() }}) as start_date
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

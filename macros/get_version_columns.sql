@@ -10,7 +10,8 @@
     {"name": "project_id", "datatype": dbt.type_int()},
     {"name": "release_date", "datatype": "date"},
     {"name": "released", "datatype": "boolean"},
-    {"name": "start_date", "datatype": "date"}
+    {"name": "start_date", "datatype": "date"},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}

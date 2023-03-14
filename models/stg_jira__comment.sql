@@ -30,6 +30,7 @@ final as (
         cast(updated as {{ dbt.type_timestamp() }}) as last_updated_at,
         _fivetran_synced
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

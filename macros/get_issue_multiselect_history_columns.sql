@@ -5,7 +5,8 @@
     {"name": "_fivetran_synced", "datatype": dbt.type_timestamp()},
     {"name": "field_id", "datatype": dbt.type_string()},
     {"name": "issue_id", "datatype": dbt.type_int()},
-    {"name": "value", "datatype": dbt.type_string()}
+    {"name": "value", "datatype": dbt.type_string()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {% if target.type == 'redshift' %}

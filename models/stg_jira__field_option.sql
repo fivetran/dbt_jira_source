@@ -24,6 +24,7 @@ final as (
         parent_id as parent_field_id,
         name as field_option_name
     from fields
+    where not coalesce(_fivetran_deleted, false)
 )
 
 select * 

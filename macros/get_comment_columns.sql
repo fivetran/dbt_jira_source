@@ -9,7 +9,8 @@
     {"name": "is_public", "datatype": "boolean"},
     {"name": "issue_id", "datatype": dbt.type_int()},
     {"name": "update_author_id", "datatype": dbt.type_string()},
-    {"name": "updated", "datatype": dbt.type_timestamp()}
+    {"name": "updated", "datatype": dbt.type_timestamp()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}

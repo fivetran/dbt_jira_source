@@ -5,7 +5,8 @@
     {"name": "description", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_int()},
     {"name": "name", "datatype": dbt.type_string()},
-    {"name": "subtask", "datatype": "boolean"}
+    {"name": "subtask", "datatype": "boolean"},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}

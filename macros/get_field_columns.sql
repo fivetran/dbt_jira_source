@@ -5,7 +5,8 @@
     {"name": "id", "datatype": dbt.type_string()},
     {"name": "is_array", "datatype": "boolean"},
     {"name": "is_custom", "datatype": "boolean"},
-    {"name": "name", "datatype": dbt.type_string()}
+    {"name": "name", "datatype": dbt.type_string()},
+    {"name": "_fivetran_deleted", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}
