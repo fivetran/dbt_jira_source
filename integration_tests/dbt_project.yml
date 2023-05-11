@@ -29,10 +29,8 @@ vars:
     jira_user_identifier: "user"
     jira_version_identifier: "version"
 
-    jira_schema: jira_source_integration_tests
-
 seeds:
-  jira_source_integration_tests:
+  jira_source_integrations_tests:
     +column_types:
       _fivetran_synced: timestamp
     comment:
