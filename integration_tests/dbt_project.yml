@@ -29,8 +29,6 @@ vars:
     jira_user_identifier: "user"
     jira_version_identifier: "version"
 
-    jira_schema: jira_source_integration_tests
-
 seeds:
   jira_source_integration_tests:
     +column_types:
