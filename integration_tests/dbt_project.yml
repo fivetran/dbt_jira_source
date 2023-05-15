@@ -30,7 +30,7 @@ vars:
     jira_version_identifier: "version"
 
 seeds:
-  jira_source_integrations_tests:
+  jira_source_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
     comment:
