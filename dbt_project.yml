@@ -23,7 +23,5 @@ vars:
     version: "{{ source('jira', 'version') }}"
 models:
   jira_source:
-    tmp:
-      +materialized: view
-    +materialized: table
+    +materialized: view
     +schema: jira_source
