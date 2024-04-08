@@ -8,6 +8,7 @@
 > ```
 
 ## Under the Hood:
+- Added integration testing pipeline for Databricks SQL Warehouse.
 - Included auto-releaser GitHub Actions workflow to automate future releases.
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
 - Updated the pull request [templates](https://github.com/fivetran/dbt_jira_source/tree/main/.github).
