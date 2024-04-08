@@ -1,7 +1,13 @@
 # dbt_jira_source v0.7.0
+[PR #39](https://github.com/fivetran/dbt_jira_source/pull/39) introduces the following changes: 
+## 🚨 Breaking Changes 🚨
+- To reduce storage, updated default materialization of staging models to views. 
+>  ⚠️ Running a `--full-refresh` will be required if you have previously run these staging models as tables and get the following error: 
+> ```
+> Trying to create view <model path> but it currently exists as a table. Either drop <model path> manually, or run dbt with `--full-refresh` and dbt will drop it for you.
+> ```
 
 ## Under the Hood:
-
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
 - Updated the pull request [templates](https://github.com/fivetran/dbt_jira_source/tree/main/.github).
 
