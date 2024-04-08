@@ -30,7 +30,7 @@ dbt seed --target "$db" --full-refresh
 dbt compile --target "$db"
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
-dbt run --vars '{jira_schema: sqlw_tests, jira_using_priorities: false, jira_using_sprints: false, jira_using_components: false, jira_using_versions: false, jira_field_grain: 'field_name'}' --target "$db" --full-refresh
+dbt run --vars '{jira_using_priorities: false, jira_using_sprints: false, jira_using_components: false, jira_using_versions: false, jira_field_grain: 'field_name'}' --target "$db" --full-refresh
 dbt test --target "$db"
 fi
 
