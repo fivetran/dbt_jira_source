@@ -1,9 +1,10 @@
-# dbt_jira_source v0.UPDATE.UPDATE
+# dbt_jira_source v0.7.0
 
- ## Under the Hood:
+## Under the Hood:
 
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
-- Updated the pull request [templates](/.github).
+- Updated the pull request [templates](https://github.com/fivetran/dbt_jira_source/tree/main/.github).
+
 # dbt_jira_source v0.6.1
 ## 🎉 Feature Updates 🎉
 - Databricks compatibility 🧱 ([#35](https://github.com/fivetran/dbt_jira_source/pull/35))
