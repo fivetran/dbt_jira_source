@@ -52,7 +52,6 @@ integration_tests:
       threads: 8
       token: "{{ env_var('CI_DATABRICKS_DBT_TOKEN') }}"
       type: databricks
-      use_inline_params: true
     databricks-sql:
       catalog: "{{ env_var('CI_DATABRICKS_DBT_CATALOG') }}"
       host: "{{ env_var('CI_DATABRICKS_DBT_HOST') }}"
