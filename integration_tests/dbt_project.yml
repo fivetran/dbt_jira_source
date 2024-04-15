@@ -5,7 +5,7 @@ profile: 'integration_tests'
 
 
 vars:
-  jira_schema: jira_source_integration_tests_02
+  jira_schema: jira_source_integration_tests_202
   jira_source:
     jira_comment_identifier: "comment"
     jira_component_identifier: "component"
@@ -31,7 +31,7 @@ vars:
 
 models:
   jira_source:
-    +schema: "{{ 'sqlw_tests' if target.name == 'databricks-sql' else 'jira' }}"
+    +schema: "{{ 'jira_source_integrations_tests_sqlw' if target.name == 'databricks-sql' else 'jira' }}"
 
 seeds:
   jira_source_integration_tests:
