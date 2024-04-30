@@ -44,7 +44,7 @@ Include the following jira_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/jira_source
-    version: [">=0.6.0", "<0.7.0"]
+    version: [">=0.7.0", "<0.8.0"]
 ```
 ## Step 3: Define database and schema variables
 By default, this package runs using your destination and the `jira` schema. If this is not where your Jira data is (for example, if your Jira schema is named `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:
