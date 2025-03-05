@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 # dbt_jira_source v0.8.0 
+=======
+# dbt_jira_source version.version
+
+## Documentation
+- Corrected references to connectors and connections in the README. ([#42](https://github.com/fivetran/dbt_jira_source/pull/42))
+>>>>>>> main
 
 # dbt_jira_source v0.7.0
 [PR #39](https://github.com/fivetran/dbt_jira_source/pull/39) introduces the following changes: 

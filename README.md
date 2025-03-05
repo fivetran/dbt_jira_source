@@ -27,7 +27,7 @@
 ## How do I use the dbt package?
 ### Step 1: Prerequisites
 To use this dbt package, you must have the following:
-- At least one Fivetran Jira connector syncing data into your destination.
+- At least one Fivetran Jira connection syncing data into your destination.
 - A **BigQuery**, **Snowflake**, **Redshift**, **PostgreSQL**, or **Databricks** destination.
 
 #### Databricks Dispatch Configuration
@@ -44,7 +44,7 @@ Include the following jira_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/jira_source
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.7.0", "<0.8.0"]
 ```
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `jira` schema. If this is not where your Jira data is (for example, if your Jira schema is named `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -55,7 +55,7 @@ vars:
     jira_schema: your_schema_name 
 ```
 ### Step 4: Disable models for non-existent sources
-Your Jira connector may not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your root `dbt_project.yml` file:
+Your Jira connection may not sync every table that this package expects. If you do not have the `SPRINT`, `COMPONENT`, or `VERSION` tables synced, add the following variable to your root `dbt_project.yml` file:
 
 ```yml
 vars:
