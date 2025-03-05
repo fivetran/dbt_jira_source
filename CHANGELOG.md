@@ -1,3 +1,5 @@
+# dbt_jira_source v0.8.0 
+
 # dbt_jira_source v0.7.0
 [PR #39](https://github.com/fivetran/dbt_jira_source/pull/39) introduces the following changes: 
 ## 🚨 Breaking Changes 🚨
