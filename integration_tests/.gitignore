@@ -2,4 +2,7 @@
 target/
 dbt_modules/
 logs/
+.DS_Store
+dbt_packages/
 env/
+package-lock.yml

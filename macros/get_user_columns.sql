@@ -7,7 +7,8 @@
     {"name": "locale", "datatype": dbt.type_string()},
     {"name": "name", "datatype": dbt.type_string()},
     {"name": "time_zone", "datatype": dbt.type_string()},
-    {"name": "username", "datatype": dbt.type_string()}
+    {"name": "username", "datatype": dbt.type_string()},
+    {"name": "is_active", "datatype": "boolean"}
 ] %}
 
 {{ return(columns) }}

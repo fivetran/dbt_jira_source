@@ -1,11 +1,17 @@
-<<<<<<< HEAD
-# dbt_jira_source v0.8.0 
-=======
-# dbt_jira_source version.version
+# dbt_jira_source v0.8.0  
+
+## Breaking Changes
+- Added the new `is_active` field to the following models so customers can easily find active records.
+  - `stg_jira__issue_field_history`
+  - `stg_jira__issue_multiselect_history`
+  - `stg_jira__user`
+
+## New Upstream Model: Sprint Reporting
+- We introduce new sprint reporting to the upstream package! This will help us examine high level sprint metrics, such as velocity, time tracking and story point completion. Customers should now be able to build valuable sprint visualizations, like their own velocity reports, estimation tracking, and goal metrics.
+  - You can find more details in the [v0.20.0 release notes of `dbt_jira`](https://github.com/fivetran/dbt_jira/releases/tag/v0.20.0).
 
 ## Documentation
 - Corrected references to connectors and connections in the README. ([#42](https://github.com/fivetran/dbt_jira_source/pull/42))
->>>>>>> main
 
 # dbt_jira_source v0.7.0
 [PR #39](https://github.com/fivetran/dbt_jira_source/pull/39) introduces the following changes: 

@@ -159,6 +159,8 @@ models:
         description: Timestamp of when the issue field was set to this value.
       - name: field_value
         description: Content of the value of that the field was set to.
+      - name: is_active
+        description: Boolean showing whether this issue field is currently active.
 
   - name: stg_jira__issue_multiselect_history
     description: >
@@ -179,6 +181,8 @@ models:
         description: Foreign key referencing the ID of the `issue` whose field was updated.
       - name: field_value
         description: Content of the value of that the field was set to. 
+      - name: is_active
+        description: Boolean showing whether this issue field is currently active.
 
   - name: stg_jira__issue_type
     description: >
@@ -309,6 +313,8 @@ models:
         description: The user's timezone, as defined in their settings.
       - name: username
         description: Account username.
+      - name: is_active
+        description: Boolean showing whether this issue field is currently active.
 
   - name: stg_jira__version
     description: Table of project versions in your organization.

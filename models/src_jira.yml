@@ -155,6 +155,8 @@ sources:
             description: Timestamp of when the issue field was set to this value.
           - name: value
             description: Content of the value of that the field was set to.
+          - name: is_active
+            description: Boolean showing whether this issue field is currently active.
 
       - name: issue_link 
         identifier: "{{ var('jira_issue_link_identifier', 'issue_link')}}"
@@ -182,7 +184,9 @@ sources:
           - name: issue_id
             description: Foreign key referencing the ID of the `issue` whose field was updated.
           - name: value
-            description: Content of the value of that the field was set to. 
+            description: Content of the value of that the field was set to.
+          - name: is_active
+            description: Boolean showing whether this issue field is currently active.
         
       - name: issue_type
         identifier: "{{ var('jira_issue_type_identifier', 'issue_type')}}"
@@ -303,6 +307,8 @@ sources:
             description: The user's timezone, as defined in their settings.
           - name: username
             description: Account username.
+          - name: is_active
+            description: Boolean showing whether this user is currently active.
       
       - name: version
         identifier: "{{ var('jira_version_identifier', 'version')}}"
