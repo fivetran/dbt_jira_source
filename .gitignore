@@ -4,4 +4,4 @@ logs/
 .DS_Store
 dbt_packages/
 env/
-package-log.yml
+package-lock.yml

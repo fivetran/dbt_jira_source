@@ -1,15 +1,12 @@
 # dbt_jira_source v0.8.0  
 [PR #43](https://github.com/fivetran/dbt_jira_source/pull/43) introduces the following changes: 
 
-## Breaking Changes
-- Added the new `is_active` field to the following models so customers can more easily find active records.
-  - `stg_jira__issue_field_history`
-  - `stg_jira__issue_multiselect_history`
-  - `stg_jira__user`
-
-## New Upstream Models: Sprint Reporting
-- We introduce new sprint reporting to the upstream package! This will help us examine high level sprint metrics, such as velocity, time tracking and story point completion. Customers should now be able to build valuable sprint visualizations, like their own velocity reports, estimation tracking, and goal metrics.
-  - You can find more details in the [v0.20.0 release notes of `dbt_jira`](https://github.com/fivetran/dbt_jira/releases/tag/v0.20.0).
+** 3 total changes • 3 possible breaking changes**
+| Data Model                                    | Change Type | Old Name | New Name                                  | Notes                                                             |
+|---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
+| [stg_jira__issue_multiselect_history](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_multiselect_history)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.       |
+| [stg_jira__issue_field_history](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_field_history)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.      |
+| [stg_jira__issue_user](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_user)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.      |
 
 ## Documentation
 - Corrected references to connectors and connections in the README. ([#42](https://github.com/fivetran/dbt_jira_source/pull/42))
