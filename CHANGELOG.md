@@ -1,7 +1,7 @@
 # dbt_jira_source v0.8.0  
 [PR #43](https://github.com/fivetran/dbt_jira_source/pull/43) introduces the following changes: 
 
-**3 total changes • 3 possible breaking changes**
+**3 total changes • 0 possible breaking changes**
 | Data Model                                    | Change Type | Old Name | New Name                                  | Notes                                                             |
 |---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
 | [stg_jira__issue_multiselect_history](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_multiselect_history)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.       |

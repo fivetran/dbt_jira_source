@@ -5,7 +5,7 @@
     {"name": "field_id", "datatype": dbt.type_string()},
     {"name": "issue_id", "datatype": dbt.type_int()},
     {"name": "value", "datatype": dbt.type_string()},
-    {"name": "is_active", "datatype": "boolean"},
+    {"name": "is_active", "datatype": "boolean"}
 ] %}
 
 {% if target.type == 'redshift' %}
