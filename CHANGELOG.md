@@ -1,4 +1,12 @@
-# dbt_jira_source version.version
+# dbt_jira_source v0.8.0  
+[PR #43](https://github.com/fivetran/dbt_jira_source/pull/43) introduces the following changes: 
+
+**3 total changes • 0 possible breaking changes**
+| Data Model                                    | Change Type | Old Name | New Name                                  | Notes                                                             |
+|---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
+| [stg_jira__issue_multiselect_history](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_multiselect_history)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.       |
+| [stg_jira__issue_field_history](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_field_history)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.      |
+| [stg_jira__issue_user](https://fivetran.github.io/dbt_jira_source/#!/model/model.jira_source.stg_jira__issue_user)        | New Columns   |          |  `is_active`    |    Shows which of the field history values is the current one.      |
 
 ## Documentation
 - Corrected references to connectors and connections in the README. ([#42](https://github.com/fivetran/dbt_jira_source/pull/42))

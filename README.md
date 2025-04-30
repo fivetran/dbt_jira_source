@@ -1,4 +1,6 @@
-<p align="center">
+# Jira Source dbt Package ([Docs](https://fivetran.github.io/dbt_jira_source/))
+
+<p align="left">
     <a alt="License"
         href="https://github.com/fivetran/dbt_jira_source/blob/main/LICENSE">
         <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" /></a>
@@ -13,7 +15,6 @@
         <img src="https://img.shields.io/badge/Fivetran_Quickstart_Compatible%3F-yes-green.svg" /></a>
 </p>
 
-# Jira Source dbt Package ([Docs](https://fivetran.github.io/dbt_jira_source/))
 ## What does this dbt package do?
 <!--section="jira_source_model"-->
 - Materializes [Jira staging tables](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation). These staging tables clean, test, and prepare your Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira) for analysis by doing the following:
@@ -44,7 +45,7 @@ Include the following jira_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/jira_source
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 ```
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `jira` schema. If this is not where your Jira data is (for example, if your Jira schema is named `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:

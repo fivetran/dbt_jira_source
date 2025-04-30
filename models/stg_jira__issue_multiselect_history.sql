@@ -31,6 +31,7 @@ final as (
         cast(time as {{ dbt.type_timestamp() }})
         {% endif %} as updated_at,
         value as field_value,
+        is_active,
         _fivetran_synced
     from fields
 )

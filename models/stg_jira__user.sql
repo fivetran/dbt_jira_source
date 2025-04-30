@@ -25,6 +25,7 @@ final as (
         name as user_display_name,
         time_zone,
         username,
+        is_active,
         _fivetran_synced
     from fields
 )
