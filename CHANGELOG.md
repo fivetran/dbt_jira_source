@@ -1,6 +1,6 @@
 # dbt_jira_source v0.9.0
 
-[PR #44](https://github.com/fivetran/dbt_jira_source/pull/44) includes the following updates:
+[PR #45](https://github.com/fivetran/dbt_jira_source/pull/45) includes the following updates:
 
 ## Breaking Change for dbt Core < 1.9.6
 
