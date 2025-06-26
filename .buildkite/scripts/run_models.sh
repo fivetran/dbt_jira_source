@@ -19,6 +19,7 @@ dbt deps
 
 if [ "$db" = "databricks-sql" ]; then
 dbt seed --vars '{jira_schema: jira_source_integrations_tests_sqlw_1}' --target "$db" --full-refresh
+dbt source freshness --vars '{jira_schema: jira_source_integrations_tests_sqlw_1}' --target "$db" || echo "...Only verifying freshness runs..."
 dbt compile --vars '{jira_schema: jira_source_integrations_tests_sqlw_1}' --target "$db"
 dbt run --vars '{jira_schema: jira_source_integrations_tests_sqlw_1}' --target "$db" --full-refresh
 dbt test --vars '{jira_schema: jira_source_integrations_tests_sqlw_1}' --target "$db"
@@ -27,6 +28,7 @@ dbt test --vars '{jira_schema: jira_source_integrations_tests_sqlw_1, jira_using
 
 else
 dbt seed --target "$db" --full-refresh
+dbt source freshness --target "$db" || echo "...Only verifying freshness runs..."
 dbt compile --target "$db"
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"

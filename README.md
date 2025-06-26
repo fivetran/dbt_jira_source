@@ -20,6 +20,7 @@
 - Materializes [Jira staging tables](https://fivetran.github.io/dbt_jira_source/#!/overview/jira_source/models/?g_v=1) which leverage data in the format described by [this ERD](https://fivetran.com/docs/applications/jira/#schemainformation). These staging tables clean, test, and prepare your Jira data from [Fivetran's connector](https://fivetran.com/docs/applications/jira) for analysis by doing the following:
   - Name columns for consistency across all packages and for easier analysis
   - Adds freshness tests to source data
+    - dbt Core >= 1.9.6 is required to run freshness tests out of the box.
   - Adds column-level testing where applicable. For example, all primary keys are tested for uniqueness and non-null values.
 - Generates a comprehensive data dictionary of your Jira data through the [dbt docs site](https://fivetran.github.io/dbt_jira_source/).
 - These tables are designed to work simultaneously with our [Jira transformation package](https://github.com/fivetran/dbt_jira).
@@ -45,7 +46,7 @@ Include the following jira_source package version in your `packages.yml` file.
 ```yaml
 packages:
   - package: fivetran/jira_source
-    version: [">=0.8.0", "<0.9.0"]
+    version: [">=0.9.0", "<0.10.0"]
 ```
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `jira` schema. If this is not where your Jira data is (for example, if your Jira schema is named `jira_fivetran`), add the following configuration to your root `dbt_project.yml` file:
