@@ -102,7 +102,9 @@ models:
       - name: environment
         description: Text field describing the environment in which the issue occurred (ie "IE9 on Windows 7").
       - name: issue_type_id
-        description: Foreign key referencing the ID of the `issue_type`. 
+        description: >
+          Foreign key referencing the ID of the `issue_type`. This value is generated
+          by coalescing the `work_type` and `issue_type` columns from the source.
       - name: issue_key
         description: UI-facing id of the issue.
       - name: original_estimate_seconds

@@ -1,3 +1,11 @@
+# dbt_jira_source v0.9.1
+
+## Under the Hood:
+- Added support for Jira's `work_type` field within the `stg_jira__issue` model.
+  - The `stg_jira__issue` staging model now coalesces `work_type` with `issue_type` to generate the `issue_type_id` field with preference on `work_type`.
+  - This change aligns with [Atlassian's recent update](https://community.atlassian.com/forums/Jira-articles/It-s-here-Work-is-the-new-collective-term-for-all-items-you/ba-p/2954892), where “work item” is replacing the term “issue” across Jira. This ensures compatibility as Jira evolves.
+- Introduced the generate-docs github workflow for consistent docs generation.
+
 # dbt_jira_source v0.9.0
 
 [PR #45](https://github.com/fivetran/dbt_jira_source/pull/45) includes the following updates:
