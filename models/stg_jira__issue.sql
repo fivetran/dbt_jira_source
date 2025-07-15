@@ -31,7 +31,7 @@ final as (
         due_date,
         environment,
         id as issue_id,
-        issue_type as issue_type_id,
+        coalesce(work_type, issue_type) as issue_type_id,
         key as issue_key,
         parent_id as parent_issue_id,
         priority as priority_id,

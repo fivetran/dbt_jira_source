@@ -1,3 +1,17 @@
+# dbt_jira_source v0.9.1
+
+[PR #47](https://github.com/fivetran/dbt_jira_source/pull/47) introduces the following updates:
+
+## Feature Updates
+- Added support for Jira's `work_type` field within the `stg_jira__issue` model.
+  - The `stg_jira__issue` staging model now coalesces `work_type` with `issue_type` to generate the `issue_type_id` field with preference on `work_type`.
+  - This change aligns with [Atlassian's recent update](https://community.atlassian.com/forums/Jira-articles/It-s-here-Work-is-the-new-collective-term-for-all-items-you/ba-p/2954892), where “work item” is replacing the term “issue” across Jira. This ensures compatibility as Jira evolves.
+
+## Under the Hood
+- Introduced the generate-docs github workflow for consistent docs generation.
+- Included an updated version of the maintainer pull request template.
+- Updated the `issue` seed file to include the `work_type` field for integration testing.
+
 [PR #48](https://github.com/fivetran/dbt_jira_source/pull/48) includes the following updates:
 
 ### Under the Hood - July 2025 Updates
@@ -6,15 +20,7 @@
 - Added `.github/workflows/generate-docs.yml`.
 - Added `+docs: show: False` to `integration_tests/dbt_project.yml`.
 - Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
-- Updated `maintainer_pull_request_template.md` with improved checklist.
-- Refreshed README tag block:
-  - Standardized Quickstart-compatible badge set
-  - Left-aligned and positioned below the H1 title.
-- Updated Python image version to `3.10.13` in `pipeline.yml`.
-- Added `CI_DATABRICKS_DBT_CATALOG` to:
-  - `.buildkite/hooks/pre-command` (as an export)
-  - `pipeline.yml` (under the `environment` block, after `CI_DATABRICKS_DBT_TOKEN`)
-- Added `certifi==2025.1.31` to `requirements.txt` (if missing).
+- Updated `maintainer_pull_request_template.md`.
 - Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
 
 # dbt_jira_source v0.9.0

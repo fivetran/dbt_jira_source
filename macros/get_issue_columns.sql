@@ -14,8 +14,8 @@
     {"name": "environment", "datatype": dbt.type_string()},
     {"name": "id", "datatype": dbt.type_int()},
     {"name": "issue_type", "datatype": dbt.type_int()},
+    {"name": "work_type", "datatype": dbt.type_int()},
     {"name": "key", "datatype": dbt.type_string()},
-
     {"name": "original_estimate", "datatype": dbt.type_float()},
     {"name": "parent_id", "datatype": dbt.type_int()},
     {"name": "priority", "datatype": dbt.type_int()},

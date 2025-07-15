@@ -1,13 +1,13 @@
 name: 'generate dbt docs'
 on:
-pull_request:
+  pull_request:
     types:
-    - labeled
+      - labeled
 
 jobs:
-generate-docs:
+  generate-docs:
     if: github.event.label.name == 'docs:ready'
     uses: fivetran/dbt_package_automations/.github/workflows/generate-docs.yml@main
     secrets: inherit
     with:
-        schema_var_name: jira_schema
+      schema_var_name: jira_schema
