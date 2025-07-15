@@ -14,13 +14,10 @@
 
 [PR #48](https://github.com/fivetran/dbt_jira_source/pull/48) includes the following updates:
 
-### Under the Hood - July 2025 Updates
-
+## July 2025 Updates
 - Updated conditions in `.github/workflows/auto-release.yml`.
-- Added `.github/workflows/generate-docs.yml`.
 - Added `+docs: show: False` to `integration_tests/dbt_project.yml`.
 - Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
-- Updated `maintainer_pull_request_template.md`.
 - Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
 
 # dbt_jira_source v0.9.0
