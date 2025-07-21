@@ -12,6 +12,14 @@
 - Included an updated version of the maintainer pull request template.
 - Updated the `issue` seed file to include the `work_type` field for integration testing.
 
+[PR #48](https://github.com/fivetran/dbt_jira_source/pull/48) includes the following updates:
+
+## July 2025 Updates
+- Updated conditions in `.github/workflows/auto-release.yml`.
+- Added `+docs: show: False` to `integration_tests/dbt_project.yml`.
+- Migrated `flags` (e.g., `send_anonymous_usage_stats`, `use_colors`) from `sample.profiles.yml` to `integration_tests/dbt_project.yml`.
+- Updated `.gitignore` to exclude additional DBT, Python, and system artifacts.
+
 # dbt_jira_source v0.9.0
 
 [PR #45](https://github.com/fivetran/dbt_jira_source/pull/45) includes the following updates:

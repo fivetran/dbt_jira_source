@@ -34,6 +34,8 @@ models:
     +schema: "{{ 'jira_source_integrations_tests_sqlw' if target.name == 'databricks-sql' else 'jira_source' }}"
 
 seeds:
+  +docs:
+    show: False
   jira_source_integration_tests:
     +column_types:
       _fivetran_synced: timestamp
@@ -86,3 +88,4 @@ dispatch:
 
 flags:
   send_anonymous_usage_stats: False
+  use_colors: True
