@@ -102,7 +102,9 @@ sources:
           - name: environment
             description: Text field describing the environment in which the issue occurred (ie "IE9 on Windows 7").
           - name: issue_type
-            description: Foreign key referencing the ID of the `issue_type`. 
+            description: Foreign key referencing the ID of the `issue_type`.
+          - name: work_type
+            description: Issue type ID for connectors that no longer sync the `issue_type` column.
           - name: key
             description: UI-facing id of the issue.
           - name: last_viewed
